@@ -14,10 +14,9 @@ const headerProps = {
 };
 
 const App = ({ Component, pageProps }: AppProps) => {
-
   return (
     <>
-      <Header {...headerProps}/>
+      <Header {...headerProps} />
       <CssBaseline />
       <Component {...pageProps} />
     </>
