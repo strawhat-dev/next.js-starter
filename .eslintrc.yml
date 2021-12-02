@@ -1,0 +1,11 @@
+env:
+  es2021: true
+  node: true
+  browser: true
+extends:
+  - next
+  - next/core-web-vitals
+  - prettier
+rules:
+  react/display-name: off
+  react-hooks/exhaustive-deps: off

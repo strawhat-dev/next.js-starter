@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+rm -rfv "$DIR/.next"
+rm -rfv "$DIR/node_modules"
+rm -rfv "$DIR/package-lock.json"
+npm cache clean --force
+npm cache verify
