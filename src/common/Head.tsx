@@ -1,14 +1,14 @@
-import Head from 'next/head';
+import NextHead from 'next/head';
 
-interface Header {
+interface Head {
   title: string;
   author: string;
   description: string;
 }
 
-export const Header = ({ title, author, description }: Header) => {
+export const Head = ({ title, author, description }: Head) => {
   return (
-    <Head>
+    <NextHead>
       <meta charSet="utf-8" />
       <title>{title}</title>
       <meta name="author" content={author} />
@@ -18,6 +18,6 @@ export const Header = ({ title, author, description }: Header) => {
         content="width=device-width, initial-scale=1, minimum-scale=1"
       />
       <link rel="icon" href="/favicon.ico" />
-    </Head>
+    </NextHead>
   );
 };

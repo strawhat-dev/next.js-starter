@@ -5,10 +5,10 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import type { AppProps } from 'next/app';
 import { CssBaseline } from '@mui/material';
-import { Header } from '@/common/Header';
+import { Head } from '@/common/Head';
 
-const headerProps = {
-  title: '',
+const headProps = {
+  title: 'Next.js App',
   author: '',
   description: '',
 };
@@ -16,7 +16,7 @@ const headerProps = {
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <Header {...headerProps} />
+      <Head {...headProps} />
       <CssBaseline />
       <Component {...pageProps} />
     </>
