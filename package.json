@@ -31,7 +31,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "cross-env": "latest",
-    "eslint": "7.32.0",
+    "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
     "prettier": "latest",
