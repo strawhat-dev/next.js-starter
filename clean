@@ -1,12 +1,68 @@
 #!/usr/bin/env bash
+
+# utility script for cleaning / debugging purposes
+# skip cleaning with '-s' / '--skip' opt along with any of:
+# 'n' / 'npm' for skipping npm cache,
+# 'y' / 'yarn' for skipping yarn cache,
+# 'p' / 'pnpm' for skipping pnpm store,
+# 'a' / 'all' for all of the above.
+# ex `./clean -s y p` or `./clean --skip yarn pnpm`
+# ex `npm run clean -- -s y p` (must incl. '--' in between with `npm run`)
+# (none skipped by default. yarn, pnpm skipped anyway if not found.)
+
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-echo "▶️ Removing .next, node_modules, & package-lock.json..."
+OPTS=$(getopt -o s: -l skip: -- "$@") || exit 1
+SKIP_NPM=0
+SKIP_YARN=0
+SKIP_PNPM=0
+SKIP_ALL() {
+  SKIP_NPM=1
+  SKIP_YARN=1
+  SKIP_PNPM=1
+}
+
+eval set -- "$OPTS"
+while true; do
+  case "$1" in
+    -s | --skip)
+      shift
+      for opt in "$@"; do
+        case "$opt" in
+          --) ;;
+          n | npm) SKIP_NPM=1 ;;
+          y | yarn) SKIP_YARN=1 ;;
+          p | pnpm) SKIP_PNPM=1 ;;
+          a | all) SKIP_ALL ;;
+          *) echo "Unexpected option: $opt" && exit 1 ;;
+        esac
+      done
+      shift
+      ;;
+    --) shift && break ;;
+    *) echo "Unexpected option: $1" && exit 1 ;;
+  esac
+done
+
+echo "▶️ Removing generated files..."
 rm -rf "$DIR/.next"
 rm -rf "$DIR/node_modules"
-rm -rf "$DIR/package-lock.json"
+rm -rf "$DIR/yarn.lock"
 rm -rf "$DIR/pnpm-lock.yaml"
-rm -rf "$DIR/yarn.lock" && echo
-command -v yarn >/dev/null && echo "▶️ yarn cache clean --all" && yarn cache clean --all && echo || echo -e "▶️ Skipping yarn cache clean...\n"
-command -v pnpm >/dev/null && echo "▶️ pnpm store prune" && pnpm store prune && echo || echo -e "▶️ Skipping pnpm store prune...\n"
-echo "▶️ npm cache clean --force" && npm cache clean --force
-npm cache verify
+rm -rf "$DIR/package-lock.json" && echo
+
+[[ "$SKIP_PNPM" -ne 1 ]] &&
+  command -v pnpm >/dev/null &&
+  echo "▶️ pnpm store prune" &&
+  pnpm store prune && echo ||
+  echo -e "▶️ Skipping \`pnpm store prune\`...\n"
+
+[[ "$SKIP_YARN" -ne 1 ]] &&
+  command -v yarn >/dev/null &&
+  echo "▶️ yarn cache clean --all" &&
+  yarn cache clean --all && echo ||
+  echo -e "▶️ Skipping \`yarn cache clean\`...\n"
+
+[[ "$SKIP_NPM" -ne 1 ]] &&
+  echo "▶️ npm cache clean --force" &&
+  npm cache clean --force && npm cache verify ||
+  echo -e "▶️ Skipping \`npm cache clean\`...\n"
