@@ -8,10 +8,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = withBundleAnalyzer({
+const userConfig = {
   reactStrictMode: true,
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
-});
+  i18n: { locales: ['en'], defaultLocale: 'en' },
+};
+
+module.exports = (phase, defaultConfig) => {
+  const config = { ...defaultConfig, ...userConfig };
+  return withBundleAnalyzer(config);
+};

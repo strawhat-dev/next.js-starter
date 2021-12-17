@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "./clean",
-    "analyze": "cross-env ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@emotion/react": "latest",
@@ -32,7 +32,6 @@
     "@next/bundle-analyzer": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
-    "cross-env": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
