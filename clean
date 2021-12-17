@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-rm -rfv "$DIR/.next"
-rm -rfv "$DIR/node_modules"
-rm -rfv "$DIR/package-lock.json"
-npm cache clean --force
+echo "▶️ Removing .next, node_modules, & package-lock.json..."
+rm -rf "$DIR/.next"
+rm -rf "$DIR/node_modules"
+rm -rf "$DIR/package-lock.json" && echo
+command -v yarn >/dev/null && echo "▶️ yarn cache clean --all" && yarn cache clean --all && echo || echo -e "▶️ Skipping yarn cache clean...\n"
+command -v pnpm >/dev/null && echo "▶️ pnpm store prune" && pnpm store prune && echo || echo -e "▶️ Skipping pnpm store prune...\n"
+echo "▶️ npm cache clean --force" && npm cache clean --force
 npm cache verify
