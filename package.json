@@ -20,6 +20,7 @@
     "@mui/icons-material": "latest",
     "@mui/lab": "latest",
     "@mui/material": "latest",
+    "@mui/system": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",

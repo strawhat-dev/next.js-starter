@@ -3,7 +3,9 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 echo "▶️ Removing .next, node_modules, & package-lock.json..."
 rm -rf "$DIR/.next"
 rm -rf "$DIR/node_modules"
-rm -rf "$DIR/package-lock.json" && echo
+rm -rf "$DIR/package-lock.json"
+rm -rf "$DIR/pnpm-lock.yaml"
+rm -rf "$DIR/yarn.lock" && echo
 command -v yarn >/dev/null && echo "▶️ yarn cache clean --all" && yarn cache clean --all && echo || echo -e "▶️ Skipping yarn cache clean...\n"
 command -v pnpm >/dev/null && echo "▶️ pnpm store prune" && pnpm store prune && echo || echo -e "▶️ Skipping pnpm store prune...\n"
 echo "▶️ npm cache clean --force" && npm cache clean --force

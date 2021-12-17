@@ -1,10 +1,6 @@
 {
   "private": true,
-  "browserslist": [
-    "> 1%",
-    "last 1 version",
-    "not dead"
-  ],
+  "browserslist": ["> 1%", "last 1 version", "not dead"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,6 +16,8 @@
     "@mui/icons-material": "^5.2.4",
     "@mui/lab": "^5.0.0-alpha.60",
     "@mui/material": "^5.2.4",
+    "@mui/system": "^5.2.4",
+
     "next": "^12.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
