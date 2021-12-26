@@ -28,7 +28,6 @@
     "sharp": "latest"
   },
   "devDependencies": {
-    "@babel/core": "latest",
     "@next/bundle-analyzer": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
