@@ -23,7 +23,7 @@ root
 
 `src`: contains source code of application
 
-`app`: folder contains constants, global styles, and “page bootstraps” that are used to initialize the client and server
+`app`: contains constants, global styles, and “page bootstraps” that are used to initialize the client and server
 
 `common`: contains everything that cannot be categorized as a module
 
@@ -74,11 +74,12 @@ root
 | [next-pwa](https://github.com/shadowwalker/next-pwa)       | zero config PWA plugin for Next.js                                     |
 | [js-cookie](https://github.com/js-cookie/js-cookie)        | light-weight api for cookies                                           |
 | [idb](https://github.com/jakearchibald/idb)                | simple IndexedDB api with promises                                     |
-| [prisma](https://github.com/prisma/prisma)                 | type-safe orm with abstraction and model generation / migrations       |
-| [objection.js](https://vincit.github.io/objection.js/)     | powerful traditional orm built on [knex](https://github.com/knex/knex) |
+| [prisma](https://github.com/prisma/prisma)                 | type-safe ORM with abstraction and model generation / migrations       |
+| [objection.js](https://vincit.github.io/objection.js/)     | powerful traditional ORM built on [knex](https://github.com/knex/knex) |
 | [nextauth.js](https://github.com/nextauthjs/next-auth)     | complete open source authentication solution for Next.js               |
 | [framer-motion](https://github.com/framer/motion)          | library for animations                                                 |
 | [tailwindcss](https://github.com/tailwindlabs/tailwindcss) | if MUI or scss is not enough                                           |
+|                                                            |                                                                        |
 
 [^1]: highly flexible and loose. adapted from [Next Right Now](https://unlyed.github.io/next-right-now/)
 [^2]: `latest-package.json` provided with latest version tags for convenience. current `package.json` should match and is stable as of writing
