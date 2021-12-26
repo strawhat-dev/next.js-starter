@@ -1,5 +1,8 @@
 {
   "private": true,
+  "engines": {
+    "node": ">= 17.0.0"
+  },
   "browserslist": [
     "> 1%",
     "last 1 version",
@@ -9,8 +12,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "clean": "./clean",
+    "lint": "next lint --no-cache",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
@@ -31,6 +33,8 @@
     "@next/bundle-analyzer": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
