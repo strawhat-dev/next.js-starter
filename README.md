@@ -1,5 +1,7 @@
 # Next.js Starter
 
+![GitHub](https://img.shields.io/github/license/strawhat-dev/next.js-starter) ![GitHub repo size](https://img.shields.io/github/repo-size/strawhat-dev/next.js-starter) ![GitHub top language](https://img.shields.io/github/languages/top/strawhat-dev/next.js-starter) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/strawhat-dev/next.js-starter/CodeQL)  ![ClearlyDefined Score](https://img.shields.io/clearlydefined/score/git/github/strawhat-dev/next.js-starter/ed5912aaa067cbbfe36542f600491a0296a10966) [![CodeFactor](https://www.codefactor.io/repository/github/strawhat-dev/next.js-starter/badge/main)](https://www.codefactor.io/repository/github/strawhat-dev/next.js-starter/overview/main) [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/strawhat-dev/next.js-starter.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/strawhat-dev/next.js-starter/context:javascript) [![Maintainability](https://api.codeclimate.com/v1/badges/f2a22a5d2aca2011297d/maintainability)](https://codeclimate.com/github/strawhat-dev/next.js-starter/maintainability) [![Depfu](https://badges.depfu.com/badges/79459e465122c0ad357e53dfe49ab41c/overview.svg)](https://depfu.com/github/strawhat-dev/next.js-starter?project_id=33382) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/strawhat-dev/next.js-starter)
+
 Minimal bleeding edge Next.js boilerplate preconfigured with TypeScript, MUI, scss, eslint, prettier, and bundle-analyzer support. Tested against Node.js 17+.
 
 ## Folder Structure[^1]
@@ -74,9 +76,10 @@ root
 | [idb](https://github.com/jakearchibald/idb)                | simple IndexedDB api with promises                                     |
 | [prisma](https://github.com/prisma/prisma)                 | type-safe orm with abstraction and model generation / migrations       |
 | [objection.js](https://vincit.github.io/objection.js/)     | powerful traditional orm built on [knex](https://github.com/knex/knex) |
+| [nextauth.js](https://github.com/nextauthjs/next-auth)     | complete open source authentication solution for Next.js               |
 | [framer-motion](https://github.com/framer/motion)          | library for animations                                                 |
 | [tailwindcss](https://github.com/tailwindlabs/tailwindcss) | if MUI or scss is not enough                                           |
 
-[^1]: highly flexible and loose. adapted from [next-right-now](https://unlyed.github.io/next-right-now/).
-[^2]: `package.json` provided with latest version tags for convenience. use provided `stable-package.json` in the case latest version of everything breaks something.
-[^3]: personal subjective recommendations. not included to keep starter minimal.
+[^1]: highly flexible and loose. adapted from [Next Right Now](https://unlyed.github.io/next-right-now/)
+[^2]: `latest-package.json` provided with latest version tags for convenience. current `package.json` should match and is stable as of writing
+[^3]: personal subjective recommendations. based on need and not included to keep starter minimal
