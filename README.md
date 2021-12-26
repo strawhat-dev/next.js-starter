@@ -62,7 +62,9 @@ root
   }
 ```
 
-| Extra Recommended Libraries[^3]                            |                                                                        |
+### Extra Recommended Libraries[^3]
+
+|                                                            |                                                                        |
 | ---------------------------------------------------------- | ---------------------------------------------------------------------- |
 | [swr](https://github.com/vercel/swr)                       | hooks for data fetching                                                |
 | [axios](https://github.com/axios/axios)                    | widely used promise based HTTP client                                  |
@@ -73,7 +75,7 @@ root
 | [prisma](https://github.com/prisma/prisma)                 | type-safe orm with abstraction and model generation / migrations       |
 | [objection.js](https://vincit.github.io/objection.js/)     | powerful traditional orm built on [knex](https://github.com/knex/knex) |
 | [framer-motion](https://github.com/framer/motion)          | library for animations                                                 |
-| [tailwindcss](https://github.com/tailwindlabs/tailwindcss) | if MUI and scss is not enough                                          |
+| [tailwindcss](https://github.com/tailwindlabs/tailwindcss) | if MUI or scss is not enough                                           |
 
 [^1]: highly flexible and loose. adapted from [next-right-now](https://unlyed.github.io/next-right-now/).
 [^2]: `package.json` provided with latest version tags for convenience. use provided `stable-package.json` in the case latest version of everything breaks something.
