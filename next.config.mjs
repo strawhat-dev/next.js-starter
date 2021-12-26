@@ -1,5 +1,4 @@
-// @ts-nocheck
-
+// @ts-check
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
 /**
