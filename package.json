@@ -1,13 +1,7 @@
 {
   "private": true,
-  "engines": {
-    "node": ">= 17.0.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 1 version",
-    "not dead"
-  ],
+  "engines": { "node": ">= 17.0.0" },
+  "browserslist": ["> 1%", "last 1 version", "not dead"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,29 +10,29 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
-    "@fontsource/roboto": "latest",
-    "@mui/icons-material": "latest",
-    "@mui/lab": "latest",
-    "@mui/material": "latest",
-    "@mui/system": "latest",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "sass": "latest",
-    "sharp": "latest"
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@fontsource/roboto": "^4.5.1",
+    "@mui/icons-material": "^5.2.5",
+    "@mui/lab": "^5.0.0-alpha.61",
+    "@mui/material": "^5.2.5",
+    "@mui/system": "^5.2.5",
+    "next": "^12.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.45.1",
+    "sharp": "^0.29.3"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@typescript-eslint/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
-    "eslint-config-prettier": "latest",
-    "prettier": "latest",
-    "typescript": "latest"
+    "@next/bundle-analyzer": "^12.0.7",
+    "@types/node": "^17.0.5",
+    "@types/react": "^17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
+    "eslint-config-next": "^12.0.7",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
   }
 }
