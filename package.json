@@ -1,8 +1,5 @@
 {
   "private": true,
-  "engines": {
-    "node": ">= 17.0.0"
-  },
   "browserslist": [
     "> 1%",
     "last 1 version",
@@ -12,7 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --no-cache",
+    "lint": "next lint",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
