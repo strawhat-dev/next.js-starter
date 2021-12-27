@@ -75,7 +75,7 @@ root
 | [js-cookie](https://github.com/js-cookie/js-cookie)        | light-weight api for cookies                                           |
 | [idb](https://github.com/jakearchibald/idb)                | simple IndexedDB api with promises                                     |
 | [prisma](https://github.com/prisma/prisma)                 | type-safe ORM with abstraction and model generation / migrations       |
-| [objection.js](https://vincit.github.io/objection.js/)     | powerful traditional ORM built on [knex](https://github.com/knex/knex) |
+| [objection.js](https://github.com/vincit/objection.js)     | powerful traditional ORM built on [knex](https://github.com/knex/knex) |
 | [nextauth.js](https://github.com/nextauthjs/next-auth)     | complete open source authentication solution for Next.js               |
 | [framer-motion](https://github.com/framer/motion)          | library for animations                                                 |
 | [tailwindcss](https://github.com/tailwindlabs/tailwindcss) | if MUI or scss is not enough                                           |
