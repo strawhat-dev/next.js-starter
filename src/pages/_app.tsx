@@ -1,11 +1,6 @@
-import '@/app/globals.scss';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import 'the-new-css-reset/css/reset.css';
 import type { AppProps } from 'next/app';
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import { Head } from '@/common/Head';
+import { Head } from '@/common';
 
 const headProps = {
   title: 'Next.js App',
@@ -13,14 +8,11 @@ const headProps = {
   description: '',
 };
 
-const theme = createTheme({ palette: { mode: 'light' } }); // or 'dark'
-
 export default ({ Component, pageProps }: AppProps) => {
   return (
-    <ThemeProvider {...{ theme }}>
+    <>
       <Head {...headProps} />
-      <CssBaseline />
       <Component {...pageProps} />
-    </ThemeProvider>
+    </>
   );
 };

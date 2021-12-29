@@ -6,9 +6,11 @@ env:
 parser: '@typescript-eslint/parser'
 parserOptions:
   project: tsconfig.json
+  sourceType: module
   ecmaVersion: latest
   ecmaFeatures:
     jsx: true
+    impliedStrict: true
 ignorePatterns:
   - next.config.mjs
 plugins:
@@ -21,7 +23,6 @@ extends:
   - prettier
 rules:
   react/display-name: off
-  react-hooks/exhaustive-deps: off
   import/no-anonymous-default-export:
     - error
     - allowArrowFunction: true

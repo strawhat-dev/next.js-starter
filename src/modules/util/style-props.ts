@@ -1,14 +1,8 @@
-import type { CSSProperties } from 'react';
-import type { SxProps } from '@mui/system';
+import type { CSS } from '@/app';
 
-export const center: CSSProperties = {
-  position: 'fixed',
+export const center: CSS = {
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
 };
-
-export const hoverZoom = (scale: number): SxProps => ({
-  transition: 'transform .2s',
-  '&:hover': { transform: `scale(${scale})` },
-});

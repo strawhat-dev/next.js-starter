@@ -1,9 +1,7 @@
 // @ts-check
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
-/**
- * @type {import('next').NextConfig}
- **/
+/** @type {import('next').NextConfig} */
 const config = {
   swcMinify: true,
   reactStrictMode: true,

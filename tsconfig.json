@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "strict": true,
     "jsx": "preserve",
-    "module": "esnext",
     "target": "es2021",
+    "module": "esnext",
     "moduleResolution": "node",
-    "jsxImportSource": "@emotion/react",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
     "noEmit": true,
     "allowJs": true,
     "sourceMap": true,
@@ -18,11 +17,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/modules/*"],
-      "@/app/*": ["src/app/*"],
-      "@/common/*": ["src/common/*"]
-    }
+    "paths": { "@/*": ["src/*"] }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
