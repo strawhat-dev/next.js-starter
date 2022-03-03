@@ -1,5 +1,5 @@
-import { Box } from '@/modules/layout';
 import { Text } from '@/modules/elements';
+import { Box } from '@/modules/layout';
 import { center } from '@/modules/util';
 
 export default () => {
@@ -12,7 +12,7 @@ export default () => {
         commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        mollit anim id est labor
       </Text>
     </Box>
   );

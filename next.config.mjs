@@ -1,5 +1,4 @@
 // @ts-check
-import withBundleAnalyzer from '@next/bundle-analyzer';
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -8,6 +7,4 @@ const config = {
   i18n: { locales: ['en'], defaultLocale: 'en' },
 };
 
-export default withBundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-})(config);
+export default config;

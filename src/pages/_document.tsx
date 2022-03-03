@@ -1,5 +1,5 @@
 // https://stitches.dev/docs/server-side-rendering
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 import { getCssText } from '@/app';
 
 export default class Document extends NextDocument {
