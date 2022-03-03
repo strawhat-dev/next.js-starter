@@ -18,7 +18,7 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "sharp": "latest",
+    "sharp": "^0.30.1",
     "swr": "latest",
     "the-new-css-reset": "latest",
     "type-fest": "latest"
