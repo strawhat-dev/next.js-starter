@@ -21,7 +21,6 @@ importOrder:
   - '^(.*)[.]scss$'
   - '^react$'
   - '^next[/](.*)$'
-  - '^@(.*)$'
   - '<THIRD_PARTY_MODULES>'
   - '^@[/](.*)$'
   - '^[.][/](.*)$'
