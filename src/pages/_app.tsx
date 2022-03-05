@@ -1,5 +1,5 @@
 import 'the-new-css-reset/css/reset.css';
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import { Head } from '@/common';
 
 const headProps = {
@@ -8,7 +8,7 @@ const headProps = {
   description: '',
 };
 
-export default ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head {...headProps} />
@@ -16,3 +16,5 @@ export default ({ Component, pageProps }: AppProps) => {
     </>
   );
 };
+
+export default App;

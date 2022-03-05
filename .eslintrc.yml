@@ -35,6 +35,5 @@ settings:
 ignorePatterns:
   - next.config.mjs
 rules:
-  react/display-name: off
   import/no-anonymous-default-export:
     - allowArrowFunction: true

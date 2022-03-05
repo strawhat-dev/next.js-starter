@@ -12,6 +12,16 @@ arrowParens: always
 importOrderSortSpecifiers: true
 importOrderGroupNamespaceSpecifiers: true
 importOrderParserPlugins:
+  - jsx
   - typescript
   - classProperties
   - decorators-legacy
+importOrder:
+  - '^(.*)[.]css$'
+  - '^(.*)[.]scss$'
+  - '^react$'
+  - '^next[/](.*)$'
+  - '^@(.*)$'
+  - '<THIRD_PARTY_MODULES>'
+  - '^@[/](.*)$'
+  - '^[.][/](.*)$'

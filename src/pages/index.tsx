@@ -2,7 +2,7 @@ import { Text } from '@/modules/elements';
 import { Box } from '@/modules/layout';
 import { center } from '@/modules/util';
 
-export default () => {
+const Index = () => {
   return (
     <Box css={center}>
       <Text>
@@ -17,3 +17,5 @@ export default () => {
     </Box>
   );
 };
+
+export default Index;
