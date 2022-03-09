@@ -1,12 +1,14 @@
 import NextHead from 'next/head';
 
-interface HeadProps {
+export const Head = ({
+  title,
+  author,
+  description,
+}: {
   title: string;
   author: string;
   description: string;
-}
-
-export const Head = ({ title, author, description }: HeadProps) => {
+}) => {
   return (
     <NextHead>
       <meta charSet="utf-8" />

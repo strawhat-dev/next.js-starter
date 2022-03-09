@@ -19,7 +19,6 @@
     "react": "latest",
     "react-dom": "latest",
     "sharp": "latest",
-    "swr": "latest",
     "the-new-css-reset": "latest",
     "type-fest": "latest"
   },
