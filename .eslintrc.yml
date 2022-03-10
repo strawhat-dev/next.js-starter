@@ -35,4 +35,5 @@ settings:
       project: tsconfig.json
 rules:
   import/no-anonymous-default-export:
+    - warn
     - allowArrowFunction: true
