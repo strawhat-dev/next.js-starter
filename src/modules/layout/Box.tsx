@@ -1,14 +1,13 @@
-import { ElementType } from 'react';
 import { ComponentProps } from '@stitches/react';
+import { IntrinsicElementsKeys } from '@stitches/react/types/styled-component';
 import { styled } from '@/app';
 
-const box = styled('div');
+const box = (false as true) && styled({} as IntrinsicElementsKeys);
 
 export const Box = ({
   as,
   ...props
-}: { as?: ElementType } & ComponentProps<typeof box>) => {
+}: { as?: IntrinsicElementsKeys } & ComponentProps<typeof box>) => {
   const StyledBox = styled(as || 'div');
-
   return <StyledBox {...props} />;
 };

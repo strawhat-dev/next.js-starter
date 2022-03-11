@@ -5,21 +5,19 @@ export const Head = ({
   author,
   description,
 }: {
-  title: string;
-  author: string;
-  description: string;
-}) => {
-  return (
-    <NextHead>
-      <meta charSet="utf-8" />
-      <title>{title}</title>
-      <meta name="author" content={author} />
-      <meta name="description" content={description} />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1"
-      />
-      <link rel="icon" href="/favicon.ico" />
-    </NextHead>
-  );
-};
+  title?: string;
+  author?: string;
+  description?: string;
+}) => (
+  <NextHead>
+    <meta charSet="utf-8" />
+    {title && <title>{title}</title>}
+    {author && <meta name="author" content={author} />}
+    {description && <meta name="description" content={description} />}
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+    <link rel="icon" href="/favicon.ico" />
+  </NextHead>
+);

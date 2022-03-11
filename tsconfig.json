@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "jsx": "preserve",
+    "target": "esnext",
     "module": "esnext",
-    "target": "es2019",
     "moduleResolution": "node",
     "lib": ["esnext", "dom", "dom.iterable"],
     "strict": true,
@@ -20,6 +20,6 @@
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

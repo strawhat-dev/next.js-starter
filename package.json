@@ -18,6 +18,7 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "reactive-button": "latest",
     "sharp": "latest",
     "the-new-css-reset": "latest",
     "type-fest": "latest"
@@ -26,13 +27,9 @@
     "@trivago/prettier-plugin-sort-imports": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
-    "@typescript-eslint/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
-    "eslint-import-resolver-typescript": "latest",
-    "eslint-plugin-import": "latest",
     "prettier": "latest",
     "typescript": "latest"
   }
