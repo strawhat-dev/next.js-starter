@@ -12,6 +12,7 @@
     "lint": "next lint --no-cache"
   },
   "dependencies": {
+    "@csstools/normalize.css": "latest",
     "@stitches/react": "latest",
     "axios": "latest",
     "dayjs": "latest",
@@ -20,7 +21,6 @@
     "react-dom": "latest",
     "reactive-button": "latest",
     "sharp": "latest",
-    "the-new-css-reset": "latest",
     "type-fest": "latest"
   },
   "devDependencies": {

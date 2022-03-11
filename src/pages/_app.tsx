@@ -1,4 +1,4 @@
-import 'the-new-css-reset/css/reset.css';
+import '@csstools/normalize.css';
 import { AppProps } from 'next/app';
 import { applyGlobalCSS } from '@/app';
 import { Head } from '@/common';
