@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@stitches/react": "latest",
-    "axios": "latest",
+    "axios": "^0.26.1",
     "dayjs": "latest",
     "next": "latest",
     "react": "latest",
