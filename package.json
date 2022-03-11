@@ -20,7 +20,7 @@
     "react": "latest",
     "react-dom": "latest",
     "reactive-button": "latest",
-    "sharp": "latest",
+    "sharp": "^0.30.2",
     "type-fest": "latest"
   },
   "devDependencies": {
