@@ -29,7 +29,7 @@
     "@types/react": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "eslint-config-prettier": "latest",
+    "eslint-config-prettier": "^8.5.0",
     "prettier": "latest",
     "typescript": "latest"
   }
