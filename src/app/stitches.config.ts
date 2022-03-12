@@ -1,6 +1,5 @@
 import { CSS as StitchesCSS, createStitches } from '@stitches/react';
 import { Property } from '@stitches/react/types/css';
-import { ScaleValue } from '@stitches/react/types/theme';
 
 // https://stitches.dev/docs/utils
 export const {
@@ -28,9 +27,12 @@ export const {
     pl: (val: Property.PaddingLeft) => ({ paddingLeft: val }),
     pr: (val: Property.PaddingRight) => ({ paddingRight: val }),
     br: (val: Property.BorderRadius) => ({ borderRadius: val }),
-    size: (val: ScaleValue) => ({ width: val, height: val }),
     linearGradient: (val: string) => ({
       backgroundImage: `linear-gradient(${val})`,
+    }),
+    size: (val: Property.Width | Property.Height) => ({
+      width: val,
+      height: val,
     }),
   },
 });
