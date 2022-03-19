@@ -5,8 +5,9 @@ import { applyGlobalCSS } from '@/app/global-css';
 import { dark, light } from '@/app/themes';
 import { Head } from '@/common';
 
+applyGlobalCSS();
+
 export default function App({ Component, pageProps }: AppProps) {
-  applyGlobalCSS();
   return (
     <ThemeProvider
       attribute="class"
