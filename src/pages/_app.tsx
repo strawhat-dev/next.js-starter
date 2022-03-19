@@ -1,3 +1,4 @@
+// https://nextjs.org/docs/advanced-features/custom-app
 import '@csstools/normalize.css/opinionated.css';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
