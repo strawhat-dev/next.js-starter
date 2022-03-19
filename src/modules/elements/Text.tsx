@@ -1,9 +1,5 @@
 import { ComponentProps } from '@stitches/react';
-import { styled } from '@/app';
-
-const text =
-  (false as true) &&
-  styled({} as 'h1' | 'h2' | 'h3' | 'h3' | 'h4' | 'h5' | 'h6' | 'p');
+import { styled } from '@/app/stitches.config';
 
 export const Text = ({
   h1,
@@ -27,3 +23,5 @@ export const Text = ({
 
   return <StyledText {...props} />;
 };
+
+const text = styled({} as 'h1' | 'h2' | 'h3' | 'h3' | 'h4' | 'h5' | 'h6' | 'p');

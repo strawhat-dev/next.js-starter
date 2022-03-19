@@ -1,5 +1,6 @@
-import { CSS } from '@/app';
-import { Text } from '@/modules/elements';
+import { useTheme } from 'next-themes';
+import { CSS } from '@/app/stitches.config';
+import { Button, Text } from '@/modules/elements';
 import { Box } from '@/modules/layout';
 
 const center: CSS = {
@@ -10,9 +11,11 @@ const center: CSS = {
 };
 
 export default function Index() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <Box css={center}>
-      <Text h2>
+      <Text h2 css={{ mb: '7%' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Curabitur vitae nunc
         sed velit dignissim sodales ut. Pulvinar mattis nunc sed blandit libero
@@ -24,6 +27,14 @@ export default function Index() {
         Cras semper auctor neque vitae tempus quam. Dignissim enim sit amet
         venenatis urna cursus eget nunc scelerisque.
       </Text>
+      <Box css={{ textAlign: 'center' }}>
+        <Button
+          shadow
+          rounded
+          size="large"
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        />
+      </Box>
     </Box>
   );
 }

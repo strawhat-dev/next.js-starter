@@ -17,6 +17,7 @@
     "axios": "latest",
     "dayjs": "latest",
     "next": "latest",
+    "next-themes": "latest",
     "react": "latest",
     "react-dom": "latest",
     "reactive-button": "latest",

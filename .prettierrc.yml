@@ -1,3 +1,4 @@
+# https://prettier.io/docs/en/options.html
 printWidth: 80
 tabWidth: 2
 useTabs: false
@@ -9,17 +10,17 @@ trailingComma: es5
 bracketSpacing: true
 bracketSameLine: false
 arrowParens: always
+
+# https://github.com/trivago/prettier-plugin-sort-imports
+plugins:
+  - '@trivago/prettier-plugin-sort-imports'
 importOrderSortSpecifiers: true
 importOrderGroupNamespaceSpecifiers: true
-importOrderParserPlugins:
-  - jsx
-  - typescript
-  - classProperties
-  - decorators-legacy
 importOrder:
   - '^(.*)[.]css$'
   - '^(.*)[.]scss$'
   - '^react$'
+  - '^react-dom$'
   - '^next[/](.*)$'
   - '<THIRD_PARTY_MODULES>'
   - '^@[/](.*)$'
