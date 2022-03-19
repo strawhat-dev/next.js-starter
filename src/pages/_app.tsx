@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider
       attribute="class"
       enableSystem={false}
-      value={{ dark: dark.className, light: light.className }}
+      value={{ dark, light }}
     >
       <Head />
       <Component {...pageProps} />
