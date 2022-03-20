@@ -16,3 +16,17 @@ export const irange = (n: number, stop?: number, step?: number) => {
     (n) => stop! + n * step!
   );
 };
+
+// random number between two values
+export const getRandomNum = (n: number, stop?: number) => {
+  const [min, max] = stop === undefined ? [0, n] : [n, stop];
+  return Math.random() * (max - min) + min;
+};
+
+// random integer between two values inclusive
+export const getRandomInt = (n: number, stop?: number) => {
+  const [min, max] =
+    stop === undefined ? [0, Math.floor(n)] : [Math.ceil(n), Math.floor(stop)];
+
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
