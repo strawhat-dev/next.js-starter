@@ -13,13 +13,14 @@
   },
   "dependencies": {
     "@csstools/normalize.css": "latest",
+    "@radix-ui/colors": "latest",
     "@stitches/react": "latest",
     "axios": "latest",
     "dayjs": "latest",
-    "next": "latest",
+    "next": "canary",
     "next-themes": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "rc",
+    "react-dom": "rc",
     "reactive-button": "latest",
     "sharp": "latest",
     "type-fest": "latest"
