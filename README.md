@@ -76,7 +76,7 @@ root
 
 ### Data Fetching
 
-[react-query](https://react-query.tanstack.com/quick-start): "The missing data-fetching library for React" which includes fetching, caching, synchronizing, and updating server state
+[react-query](https://react-query.tanstack.com/quick-start): "The missing data-fetching library for React". Includes fetching, caching, synchronizing, and updating server state
 
 [swr](https://swr.vercel.app): React hooks for data fetching, and lighter weight alternative 
 to react-query
@@ -86,6 +86,12 @@ to react-query
 [prisma](https://www.prisma.io): Type-safe ORM with abstraction and model generation / migrations
 
 [objection.js](https://vincit.github.io/objection.js): More robust ORM built on [knex](https://github.com/knex/knex)
+
+### GraphQL
+
+[Hasura](https://github.com/hasura/graphql-engine): Instant Realtime GraphQL APIs over PostgreSQL with fine grained access control
+
+[urql](https://github.com/FormidableLabs/urql): Highly customisable and versatile GraphQL client
 
 ### PWA Support
 
