@@ -16,10 +16,13 @@ export const applyGlobalCSS = globalCss({
   '*': { boxSizing: 'inherit' },
   '*:before': { boxSizing: 'inherit' },
   '*:after': { boxSizing: 'inherit' },
-  '#__next': { height: '100vh' },
+  '#__next': { minHeight: '100vh' },
+  '*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *))': {
+    border: 'unset',
+  },
   html: {
     color: '$fg',
-    backgroundColor: '$bg',
+    bgColor: '$bg',
     boxSizing: 'border-box',
     fontFamily: globalFonts.join(','),
   },

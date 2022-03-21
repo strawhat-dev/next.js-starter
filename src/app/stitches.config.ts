@@ -25,21 +25,29 @@ export const {
   createTheme,
 } = createStitches({
   utils: {
+    bgColor: (backgroundColor: Property.BackgroundColor) => ({
+      backgroundColor,
+    }),
     linearGradient: (val: string) => ({
       backgroundImage: `linear-gradient(${val})`,
     }),
-    size: (val: Property.Width | Property.Height) => ({
-      width: val,
-      height: val,
-    }),
+    size: (val: Property.Width | Property.Height) => {
+      if (typeof val === 'string') {
+        let [width, height] = val.trim().split(' ');
+        height ??= width;
+        return { width, height };
+      }
+
+      return { width: val, height: val };
+    },
     rowSpan: (val: number) => ({ gridRow: `${val} span / auto` }),
     columnSpan: (val: number) => ({ gridColumn: `${val} span / auto` }),
-    br: (val: Property.BorderRadius) => ({ borderRadius: val }),
-    m: (val: Property.Margin) => ({ margin: val }),
-    mt: (val: Property.MarginTop) => ({ marginTop: val }),
-    mr: (val: Property.MarginRight) => ({ marginRight: val }),
-    mb: (val: Property.MarginBottom) => ({ marginBottom: val }),
-    ml: (val: Property.MarginLeft) => ({ marginLeft: val }),
+    br: (borderRadius: Property.BorderRadius) => ({ borderRadius }),
+    m: (margin: Property.Margin) => ({ margin }),
+    mt: (marginTop: Property.MarginTop) => ({ marginTop }),
+    mr: (marginRight: Property.MarginRight) => ({ marginRight }),
+    mb: (marginBottom: Property.MarginBottom) => ({ marginBottom }),
+    ml: (marginLeft: Property.MarginLeft) => ({ marginLeft }),
     mx: (val: Property.MarginInline) => {
       if (typeof val === 'string') {
         let [marginLeft, marginRight] = val.trim().split(' ');
@@ -58,11 +66,11 @@ export const {
 
       return { marginTop: val, marginBottom: val };
     },
-    p: (val: Property.Padding) => ({ padding: val }),
-    pt: (val: Property.PaddingTop) => ({ paddingTop: val }),
-    pr: (val: Property.PaddingRight) => ({ paddingRight: val }),
-    pb: (val: Property.PaddingBottom) => ({ paddingBottom: val }),
-    pl: (val: Property.PaddingLeft) => ({ paddingLeft: val }),
+    p: (padding: Property.Padding) => ({ padding }),
+    pt: (paddingTop: Property.PaddingTop) => ({ paddingTop }),
+    pr: (paddingRight: Property.PaddingRight) => ({ paddingRight }),
+    pb: (paddingBottom: Property.PaddingBottom) => ({ paddingBottom }),
+    pl: (paddingLeft: Property.PaddingLeft) => ({ paddingLeft }),
     px: (val: Property.PaddingInline) => {
       if (typeof val === 'string') {
         let [paddingLeft, paddingRight] = val.trim().split(' ');

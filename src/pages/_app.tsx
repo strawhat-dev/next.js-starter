@@ -2,7 +2,7 @@
 import '@csstools/normalize.css/opinionated.css';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
-import { applyGlobalCSS } from '@/app/global-css';
+import { applyGlobalCSS } from '@/app/global-styles';
 import { dark, light } from '@/app/themes';
 import { Head } from '@/common';
 
