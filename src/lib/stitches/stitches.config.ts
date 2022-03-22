@@ -1,19 +1,9 @@
 // https://stitches.dev/docs/utils
-// https://stitches.dev/docs/typescript
 import { RequireExactlyOne } from 'type-fest';
 import { Property } from '@stitches/react/types/css';
-import {
-  CSSProperties,
-  PropertyValue,
-  CSS as StitchesCSS,
-  createStitches,
-} from '@stitches/react';
-
-export type CSS = StitchesCSS<typeof config>;
-export type CSSPropertyValue<T extends keyof CSSProperties> = PropertyValue<
-  T,
-  typeof config
->;
+import { gray } from '@radix-ui/colors';
+import { CSSProperties, createStitches } from '@stitches/react';
+import { long, short, soft } from '@/config/shadows';
 
 export const {
   css,
@@ -24,6 +14,10 @@ export const {
   getCssText,
   createTheme,
 } = createStitches({
+  theme: {
+    colors: { ...gray },
+    shadows: { soft, short, long },
+  },
   utils: {
     bgColor: (backgroundColor: Property.BackgroundColor) => ({
       backgroundColor,
@@ -89,12 +83,6 @@ export const {
 
       return { paddingTop: val, paddingBottom: val };
     },
-    /**
-     * Allows for the usage of boolean css props in custom components
-     * and assigns the props accordingly,
-     * where empty values are disregarded
-     * and only values that are true resolve to the given trueValue.
-     */
     resolveCSSProperties: (
       entries: (RequireExactlyOne<Record<keyof CSSProperties, unknown>> & {
         trueValue: string | number;
@@ -103,7 +91,7 @@ export const {
       const cssPropValues = entries.reduce((prev, { trueValue, ...entry }) => {
         const [name, val] = Object.entries(entry).pop()!;
         const resolved =
-          !val && typeof val !== 'number'
+          !val && val !== 0
             ? {}
             : val === true
             ? { [name]: trueValue }
@@ -115,4 +103,14 @@ export const {
       return cssPropValues;
     },
   },
+});
+
+export const applyGlobalCSS = globalCss({
+  html: {
+    color: '$gray12',
+    bgColor: '$gray1',
+    minHeight: '-webkit-fill-available',
+  },
+  body: { minHeight: '100vh; min-height: -webkit-fill-available;' },
+  '#__next > div': { minHeight: '100vh' },
 });

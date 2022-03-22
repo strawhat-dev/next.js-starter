@@ -1,10 +1,14 @@
-// https://nextjs.org/docs/advanced-features/custom-app
-import '@csstools/normalize.css/opinionated.css';
+import 'sanitize.css';
+import 'sanitize.css/assets.css';
+import 'sanitize.css/forms.css';
+import 'sanitize.css/system-ui.css';
+import 'sanitize.css/typography.css';
+import 'sanitize.css/ui-monospace.css';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
-import { applyGlobalCSS } from '@/app/global-styles';
-import { dark, light } from '@/app/themes';
-import { Head } from '@/common';
+import { Head } from '@/components/next';
+import { dark, light } from '@/config/themes';
+import { applyGlobalCSS } from '@/lib/stitches';
 
 applyGlobalCSS();
 

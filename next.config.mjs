@@ -8,4 +8,13 @@ export default {
   swcMinify: true,
   reactStrictMode: true,
   compiler: { removeConsole: process.env.NODE_ENV === 'production' },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    domains: ['raw.githubusercontent.com'],
+  },
+  experimental: {
+    runtime: 'nodejs',
+    optimizeCss: true,
+    serverComponents: true,
+  },
 };

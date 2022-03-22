@@ -1,0 +1,9 @@
+{
+  "https://cdn.jsdelivr.net/npm/sanitize.css@latest/assets.css": { "integrity": "sha512-7qo9gnYWW3Htc0zR/clUNQA1mkZp0Ay7niYPHCHjA0aSZxj4twCg/Wag1GR6+GD+NwnJtUMYyd5MVCRij20oXg==", "contentType": "text/css; charset=utf-8" },
+  "https://cdn.jsdelivr.net/npm/sanitize.css@latest/forms.css": { "integrity": "sha512-unAHe94nn+8z0WiItYjBYSS9HDdGA6KawrcCsKc7K/optNiMRGw6JuHduGqiZjVJliuCB6tT7eKOWgl+q757CA==", "contentType": "text/css; charset=utf-8" },
+  "https://cdn.jsdelivr.net/npm/sanitize.css@latest/sanitize.min.css": { "integrity": "sha512-Gh1I6FElgIRxY2zBFgVKiDe+XEd9tLrEe8GpKdoxfYIeIw2F4oUo2tqfJW1B0szoadNyjH8Gp5BZY6W0k9WzWw==", "contentType": "text/css; charset=utf-8" },
+  "https://cdn.jsdelivr.net/npm/sanitize.css@latest/system-ui.css": { "integrity": "sha512-vWJCO2GDzBuDgxCGqjBaECml7i7oL+kt3gNUP1qxz051CwNt1rsLrRmFBAf9HcgNydsaUoPFPE5LugAJ2cThUw==", "contentType": "text/css; charset=utf-8" },
+  "https://cdn.jsdelivr.net/npm/sanitize.css@latest/typography.css": { "integrity": "sha512-AM2lhRopYiRn9tiYPGZ0RO3zAutnCeLyU9YhyjYjRD40Bza4YOk6UuVvcYkUT4ISnZui9Jd4DYcHhETRQ7PnNA==", "contentType": "text/css; charset=utf-8" },
+  "https://cdn.jsdelivr.net/npm/sanitize.css@latest/ui-monospace.css": { "integrity": "sha512-FaMWI4b5nBjc2oUa0EvqGpzH1RVr/9A/KOdujWV4KSiWFbGwu8AoQewVR2KU9oeLuPu6JIR55OCZ2xOgeXF1MA==", "contentType": "text/css; charset=utf-8" },
+  "version": 1
+}

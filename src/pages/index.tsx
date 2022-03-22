@@ -1,33 +1,56 @@
+import { Pokemon } from '@/types';
+import { GetServerSideProps } from 'next';
+import Image from 'next/image';
+import axios from 'axios';
 import { useTheme } from 'next-themes';
-import { CSS } from '@/app/stitches.config';
-import { Button, Text } from '@/modules/elements';
-import { Box } from '@/modules/layout';
+import { Button, Text } from '@/components/elements';
+import { Box, Grid } from '@/components/layout';
 
-const center: CSS = {
-  top: '50%',
-  left: '50%',
-  position: 'absolute',
-  transform: 'translate(-50%, -50%)',
+// http://localhost:3000/?pokemon=[query] (or pikachu by default)
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {
+    query: { pokemon },
+  } = context;
+
+  const {
+    data: { id, name, stats, sprites },
+  } = await axios.get<Pokemon>(
+    `https://pokeapi.co/api/v2/pokemon/${pokemon || 'pikachu'}`
+  );
+
+  return { props: { pokemon: { id, name, stats, sprites } } };
 };
 
-export default function Index() {
+export default function Index({ pokemon }: { pokemon?: Pokemon }) {
   const { theme, setTheme } = useTheme();
 
   return (
-    <Box css={center}>
-      <Text h2 css={{ mb: '7%' }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Curabitur vitae nunc
-        sed velit dignissim sodales ut. Pulvinar mattis nunc sed blandit libero
-        volutpat. Consectetur libero id faucibus nisl tincidunt eget nullam non
-        nisi. Magna sit amet purus gravida quis blandit turpis cursus in.
-        Bibendum neque egestas congue quisque egestas. Adipiscing elit
-        pellentesque habitant morbi tristique senectus. Eget velit aliquet
-        sagittis id consectetur. Nec tincidunt praesent semper feugiat nibh.
-        Cras semper auctor neque vitae tempus quam. Dignissim enim sit amet
-        venenatis urna cursus eget nunc scelerisque.
-      </Text>
-      <Box css={{ textAlign: 'center' }}>
+    <Box
+      flexbox
+      flexDirection="column"
+      justifyContent="center"
+      css={{ mx: '15%' }}
+    >
+      {pokemon && (
+        <Grid itemMargin gap>
+          <Box>
+            <Text h1>{pokemon.name}</Text>
+            <Text h3>{`id: ${pokemon.id}`}</Text>
+            {pokemon.stats.map(({ base_stat, stat: { name } }) => (
+              <Text h3 key={name}>{`${name}: ${base_stat}`}</Text>
+            ))}
+          </Box>
+          <Box>
+            <Image
+              alt="pokemon"
+              width={600}
+              height={600}
+              src={pokemon.sprites.other.home.front_default}
+            />
+          </Box>
+        </Grid>
+      )}
+      <Box css={{ textAlign: 'center', mb: 50 }}>
         <Button
           shadow
           rounded

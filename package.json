@@ -12,16 +12,16 @@
     "lint": "next lint --no-cache"
   },
   "dependencies": {
-    "@csstools/normalize.css": "latest",
     "@radix-ui/colors": "latest",
     "@stitches/react": "latest",
     "axios": "latest",
     "dayjs": "latest",
-    "next": "canary",
+    "next": "12.1.1-canary.15",
     "next-themes": "latest",
-    "react": "rc",
-    "react-dom": "rc",
+    "react": "18.0.0-rc.2",
+    "react-dom": "18.0.0-rc.2",
     "reactive-button": "latest",
+    "sanitize.css": "latest",
     "sharp": "latest",
     "type-fest": "latest"
   },
@@ -29,6 +29,7 @@
     "@trivago/prettier-plugin-sort-imports": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
+    "critters": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
