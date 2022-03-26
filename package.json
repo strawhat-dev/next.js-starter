@@ -22,7 +22,7 @@
     "@stitches/react": "latest",
     "axios": "latest",
     "dayjs": "latest",
-    "next": "12.1.1-canary.15",
+    "next": "12.1.1",
     "next-themes": "latest",
     "react": "18.0.0-rc.2",
     "react-dom": "18.0.0-rc.2",
