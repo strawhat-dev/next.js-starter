@@ -1,10 +1,13 @@
 import { Pokemon } from '@/types';
 import { GetServerSideProps } from 'next';
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import axios from 'axios';
 import { useTheme } from 'next-themes';
 import { Button, Text } from '@/components/elements';
 import { Box, Grid } from '@/components/layout';
+
+const Image = dynamic(() => import('next/image'), { suspense: true });
 
 // http://localhost:3000/?pokemon=[query] (or pikachu by default)
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -13,44 +16,53 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } = context;
 
   const {
-    data: { id, name, stats, sprites },
+    data: { name, stats, sprites },
   } = await axios.get<Pokemon>(
     `https://pokeapi.co/api/v2/pokemon/${pokemon || 'pikachu'}`
   );
 
-  return { props: { pokemon: { id, name, stats, sprites } } };
+  return { props: { pokemon: { name, stats, sprites } } };
 };
 
-export default function Index({ pokemon }: { pokemon?: Pokemon }) {
+export default function Index({ pokemon }: { pokemon: Pokemon }) {
   const { theme, setTheme } = useTheme();
 
   return (
-    <Box
-      flexbox
-      flexDirection="column"
-      justifyContent="center"
-      css={{ mx: '15%' }}
-    >
-      {pokemon && (
-        <Grid itemMargin gap>
-          <Box>
-            <Text h1>{pokemon.name}</Text>
-            <Text h3>{`id: ${pokemon.id}`}</Text>
-            {pokemon.stats.map(({ base_stat, stat: { name } }) => (
-              <Text h3 key={name}>{`${name}: ${base_stat}`}</Text>
-            ))}
-          </Box>
-          <Box>
+    <Box flexbox justifyContent flexDirection="column" css={{ mx: '15%' }}>
+      <Grid gap itemMargin>
+        <Box>
+          <Text h1 size="2.75rem">
+            {pokemon.name}
+          </Text>
+          {pokemon.stats.map(({ base_stat, stat: { name } }) => (
+            <Box
+              key={name}
+              flexbox
+              justifyContent="space-between"
+              css={{ minWidth: '15rem' }}
+            >
+              <Text span size="1.25rem" weight="bold">
+                {name}
+              </Text>
+              <Text span size="1.25rem" weight="bold">
+                {base_stat}
+              </Text>
+            </Box>
+          ))}
+        </Box>
+        <Box shadow>
+          <Suspense fallback="loading...">
             <Image
-              alt="pokemon"
+              priority
               width={600}
               height={600}
+              alt={pokemon.name}
               src={pokemon.sprites.other.home.front_default}
             />
-          </Box>
-        </Grid>
-      )}
-      <Box css={{ textAlign: 'center', mb: 50 }}>
+          </Suspense>
+        </Box>
+      </Grid>
+      <Box css={{ textAlign: 'center', my: '3rem' }}>
         <Button
           shadow
           rounded

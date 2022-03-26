@@ -1,9 +1,18 @@
 // https://stitches.dev/docs/utils
-import { RequireExactlyOne } from 'type-fest';
+import { LiteralUnion, RequireExactlyOne, ValueOf } from 'type-fest';
 import { Property } from '@stitches/react/types/css';
-import { gray } from '@radix-ui/colors';
-import { CSSProperties, createStitches } from '@stitches/react';
-import { long, short, soft } from '@/config/shadows';
+import { ComponentProps } from 'react';
+import { blackA, gray, grayA } from '@radix-ui/colors';
+import {
+  CSSProperties,
+  PropertyValue,
+  CSS as StitchesCSS,
+  createStitches,
+} from '@stitches/react';
+import { DropShadow, DropShadows, lg, sm, soft } from '@/config/shadows';
+
+export type CSS = StitchesCSS<typeof config>;
+export type StyledComponentProps = ComponentProps<typeof StyledComponent>;
 
 export const {
   css,
@@ -15,34 +24,16 @@ export const {
   createTheme,
 } = createStitches({
   theme: {
-    colors: { ...gray },
-    shadows: { soft, short, long },
+    colors: { ...gray, ...grayA, ...blackA },
+    shadows: { soft, sm, lg },
   },
   utils: {
-    bgColor: (backgroundColor: Property.BackgroundColor) => ({
-      backgroundColor,
-    }),
-    linearGradient: (val: string) => ({
-      backgroundImage: `linear-gradient(${val})`,
-    }),
-    size: (val: Property.Width | Property.Height) => {
-      if (typeof val === 'string') {
-        let [width, height] = val.trim().split(' ');
-        height ??= width;
-        return { width, height };
-      }
-
-      return { width: val, height: val };
-    },
-    rowSpan: (val: number) => ({ gridRow: `${val} span / auto` }),
-    columnSpan: (val: number) => ({ gridColumn: `${val} span / auto` }),
-    br: (borderRadius: Property.BorderRadius) => ({ borderRadius }),
-    m: (margin: Property.Margin) => ({ margin }),
-    mt: (marginTop: Property.MarginTop) => ({ marginTop }),
-    mr: (marginRight: Property.MarginRight) => ({ marginRight }),
-    mb: (marginBottom: Property.MarginBottom) => ({ marginBottom }),
-    ml: (marginLeft: Property.MarginLeft) => ({ marginLeft }),
-    mx: (val: Property.MarginInline) => {
+    m: (margin: PropertyValue<'margin'>) => ({ margin }),
+    mt: (marginTop: PropertyValue<'marginTop'>) => ({ marginTop }),
+    mr: (marginRight: PropertyValue<'marginRight'>) => ({ marginRight }),
+    mb: (marginBottom: PropertyValue<'marginBottom'>) => ({ marginBottom }),
+    ml: (marginLeft: PropertyValue<'marginLeft'>) => ({ marginLeft }),
+    mx: (val: PropertyValue<'marginInline'> | string) => {
       if (typeof val === 'string') {
         let [marginLeft, marginRight] = val.trim().split(' ');
         marginRight ??= marginLeft;
@@ -51,7 +42,7 @@ export const {
 
       return { marginLeft: val, marginRight: val };
     },
-    my: (val: Property.MarginBlock) => {
+    my: (val: PropertyValue<'marginBlock'> | string) => {
       if (typeof val === 'string') {
         let [marginTop, marginBottom] = val.trim().split(' ');
         marginBottom ??= marginTop;
@@ -60,12 +51,13 @@ export const {
 
       return { marginTop: val, marginBottom: val };
     },
-    p: (padding: Property.Padding) => ({ padding }),
-    pt: (paddingTop: Property.PaddingTop) => ({ paddingTop }),
-    pr: (paddingRight: Property.PaddingRight) => ({ paddingRight }),
-    pb: (paddingBottom: Property.PaddingBottom) => ({ paddingBottom }),
-    pl: (paddingLeft: Property.PaddingLeft) => ({ paddingLeft }),
-    px: (val: Property.PaddingInline) => {
+
+    p: (padding: PropertyValue<'padding'>) => ({ padding }),
+    pt: (paddingTop: PropertyValue<'paddingTop'>) => ({ paddingTop }),
+    pr: (paddingRight: PropertyValue<'paddingRight'>) => ({ paddingRight }),
+    pb: (paddingBottom: PropertyValue<'paddingBottom'>) => ({ paddingBottom }),
+    pl: (paddingLeft: PropertyValue<'paddingLeft'>) => ({ paddingLeft }),
+    px: (val: PropertyValue<'paddingInline'> | string) => {
       if (typeof val === 'string') {
         let [paddingLeft, paddingRight] = val.trim().split(' ');
         paddingRight ??= paddingLeft;
@@ -74,7 +66,7 @@ export const {
 
       return { paddingLeft: val, paddingRight: val };
     },
-    py: (val: Property.PaddingBlock) => {
+    py: (val: PropertyValue<'paddingBlock'> | string) => {
       if (typeof val === 'string') {
         let [paddingTop, paddingBottom] = val.trim().split(' ');
         paddingBottom ??= paddingTop;
@@ -83,12 +75,53 @@ export const {
 
       return { paddingTop: val, paddingBottom: val };
     },
-    resolveCSSProperties: (
-      entries: (RequireExactlyOne<Record<keyof CSSProperties, unknown>> & {
-        trueValue: string | number;
-      })[]
+
+    br: (borderRadius: PropertyValue<'borderRadius'>) => ({ borderRadius }),
+    rowSpan: (val: number) => ({ gridRow: `${val} span / auto` }),
+    columnSpan: (val: number) => ({ gridColumn: `${val} span / auto` }),
+    bgColor: (backgroundColor: PropertyValue<'backgroundColor'>) => ({
+      backgroundColor,
+    }),
+    linearGradient: (val: string) => ({
+      backgroundImage: `linear-gradient(${val})`,
+    }),
+    size: (val: PropertyValue<'width'> | PropertyValue<'height'> | string) => {
+      if (typeof val === 'string') {
+        let [width, height] = val.trim().split(' ');
+        height ??= width;
+        return { width, height };
+      }
+
+      return { width: val, height: val };
+    },
+    shadow: (
+      val:
+        | [DropShadow, Property.Color]
+        | DropShadow
+        | PropertyValue<'boxShadow'>
     ) => {
-      const cssPropValues = entries.reduce((prev, { trueValue, ...entry }) => {
+      let shadow;
+      if (Array.isArray(val)) {
+        const [token, color] = val;
+        shadow = DropShadows[token].replace(
+          /\$(.*)/,
+          color.startsWith('$') ? `$colors${color}` : color
+        );
+      }
+
+      shadow ??= DropShadows[val as DropShadow];
+      shadow ??= val;
+      return { filter: `drop-shadow(${shadow})` };
+    },
+
+    resolveCSSProperties: (
+      entries: (RequireExactlyOne<
+        Record<LiteralUnion<keyof CSSProperties, string>, unknown>
+      > & {
+        trueValue: ValueOf<CSSProperties>;
+      })[]
+    ) =>
+      entries.reduce((prev, { trueValue, ...entry }) => {
         const [name, val] = Object.entries(entry).pop()!;
         const resolved =
           !val && val !== 0
@@ -98,10 +131,7 @@ export const {
             : { [name]: val };
 
         return { ...prev, ...resolved };
-      }, {});
-
-      return cssPropValues;
-    },
+      }, {}),
   },
 });
 
@@ -109,8 +139,10 @@ export const applyGlobalCSS = globalCss({
   html: {
     color: '$gray12',
     bgColor: '$gray1',
-    minHeight: '-webkit-fill-available',
+    height: '-webkit-fill-available',
   },
   body: { minHeight: '100vh; min-height: -webkit-fill-available;' },
   '#__next > div': { minHeight: '100vh' },
 });
+
+export const StyledComponent = styled('div');

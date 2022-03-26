@@ -1,40 +1,42 @@
+import { ValueOf } from 'type-fest';
 import { IntrinsicElementsKeys } from '@stitches/react/types/styled-component';
-import { CSSPropertyValue, StyledComponentProps, styled } from '@/lib/stitches';
+import { ComponentType } from 'react';
+import { CSS, StyledComponentProps, styled } from '@/lib/stitches';
 
 interface BoxProps extends StyledComponentProps {
-  as?: IntrinsicElementsKeys;
+  as?: IntrinsicElementsKeys | ComponentType;
+  flex?: ValueOf<CSS, 'flex'> | boolean;
   flexbox?: boolean;
-  flex?: CSSPropertyValue<'flex'> | boolean;
-  flexDirection?: CSSPropertyValue<'flexDirection'>;
-  justifyContent?: CSSPropertyValue<'justifyContent'>;
-  alignItems?: CSSPropertyValue<'alignItems'>;
-  margin?: CSSPropertyValue<'margin'>;
-  padding?: CSSPropertyValue<'padding'>;
-  size?: string | number;
+  flexDirection?: ValueOf<CSS, 'flexDirection'>;
+  alignItems?: ValueOf<CSS, 'alignItems'> | boolean;
+  justifyContent?: ValueOf<CSS, 'justifyContent'> | boolean;
+  border?: ValueOf<CSS, 'border'> | boolean;
+  shadow?: ValueOf<CSS, 'shadow'> | boolean;
+  boxShadow?: ValueOf<CSS, 'boxShadow'> | boolean;
 }
 
 export const Box = ({
   as = 'div',
-  flexbox,
   flex,
+  flexbox,
   flexDirection,
-  justifyContent,
   alignItems,
-  margin,
-  padding,
-  size,
+  justifyContent,
+  border,
+  shadow,
+  boxShadow,
   ...props
 }: BoxProps) => {
   const StyledBox = styled(as, {
-    size,
-    margin,
-    padding,
-    alignItems,
-    justifyContent,
     flexDirection,
     resolveCSSProperties: [
-      { display: flexbox, trueValue: 'flex' },
       { flex, trueValue: 1 },
+      { border, trueValue: 'solid $gray8' },
+      { shadow, trueValue: '$blur' },
+      { boxShadow, trueValue: '$soft' },
+      { alignItems, trueValue: 'center' },
+      { justifyContent, trueValue: 'center' },
+      { display: flexbox, trueValue: 'flex' },
     ],
   });
 

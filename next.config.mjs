@@ -1,10 +1,11 @@
-// https://nextjs.org/docs/api-reference/next.config.js/introduction
-// https://nextjs.org/docs/basic-features/image-optimization#domains
-// https://nextjs.org/docs/advanced-features/compiler
+import bundleAnalyzer from '@next/bundle-analyzer';
 
-// @ts-check
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 /** @type {import('next').NextConfig} */
-export default {
+const config = {
   swcMinify: true,
   reactStrictMode: true,
   compiler: { removeConsole: process.env.NODE_ENV === 'production' },
@@ -18,3 +19,5 @@ export default {
     serverComponents: true,
   },
 };
+
+export default withBundleAnalyzer(config);

@@ -19,7 +19,7 @@ importOrderGroupNamespaceSpecifiers: true
 importOrder:
   - '^(.*)[.]css$'
   - '^(.*)[.]scss$'
-  - '^type-fest$'
+  - '^type-fest([/].*)?$'
   - '^(.*)types(.*)$'
   - '^next([/].*)?$'
   - '^react$'

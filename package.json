@@ -1,5 +1,9 @@
 {
   "private": true,
+  "packageManager": "pnpm@6.32.3",
+  "engines": {
+    "node": ">=16.8.0"
+  },
   "browserslist": [
     "> 1%",
     "last 1 version",
@@ -9,7 +13,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --no-cache"
+    "lint": "next lint --no-cache",
+    "inspect": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "analyze": "cross-env ANALYZE='true' next build"
   },
   "dependencies": {
     "@radix-ui/colors": "latest",
@@ -21,15 +27,16 @@
     "react": "18.0.0-rc.2",
     "react-dom": "18.0.0-rc.2",
     "reactive-button": "latest",
-    "sanitize.css": "latest",
     "sharp": "latest",
     "type-fest": "latest"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "latest",
     "@trivago/prettier-plugin-sort-imports": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "critters": "latest",
+    "cross-env": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",

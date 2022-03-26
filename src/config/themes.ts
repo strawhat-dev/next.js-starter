@@ -1,11 +1,11 @@
-// https://stitches.dev/docs/theming
-import { gray, grayDark } from '@radix-ui/colors';
+// https://www.radix-ui.com/docs/colors/getting-started/usage#stitches
+import { gray, grayA, grayDark, grayDarkA } from '@radix-ui/colors';
 import { createTheme } from '@/lib/stitches';
 
 export const light = createTheme({
-  colors: { ...gray },
+  colors: { ...gray, ...grayA },
 });
 
 export const dark = createTheme({
-  colors: { ...grayDark },
+  colors: { ...grayDark, ...grayDarkA },
 });
