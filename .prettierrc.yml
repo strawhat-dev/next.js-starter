@@ -12,8 +12,6 @@ bracketSameLine: false
 arrowParens: always
 
 # https://github.com/trivago/prettier-plugin-sort-imports
-plugins:
-  - '@trivago/prettier-plugin-sort-imports'
 importOrderSortSpecifiers: true
 importOrderGroupNamespaceSpecifiers: true
 importOrder:
