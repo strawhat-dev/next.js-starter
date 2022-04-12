@@ -1,57 +1,61 @@
-import { ValueOf } from 'type-fest';
-import { IntrinsicElementsKeys } from '@stitches/react/types/styled-component';
-import { ComponentType } from 'react';
-import { CSS, StyledComponentProps, styled } from '@/lib/stitches';
+import { ComponentProps, ElementType, ForwardedRef, forwardRef } from 'react';
+import { BoxProps } from '@/components/layout';
+import { CSS, StyledComponent } from '@/lib/stitches';
 
-interface GridProps extends StyledComponentProps {
-  as?: IntrinsicElementsKeys | ComponentType;
+interface GridProps {
+  paddingBlock?: CSS['paddingBlock'] | boolean;
+  gap?: CSS['gap'] | boolean;
   columns?: 'auto-fit' | 'auto-fill' | number;
-  columnSize?: Extract<ValueOf<CSS, 'width'>, string>;
-  rowSize?: ValueOf<CSS, 'gridAutoRows'>;
-  gap?: ValueOf<CSS, 'gap'> | boolean;
-  paddingBlock?: ValueOf<CSS, 'paddingBlock'> | boolean;
-  border?: ValueOf<CSS, 'border'> | boolean;
-  shadow?: ValueOf<CSS, 'boxShadow'> | boolean;
-  boxShadow?: ValueOf<CSS, 'boxShadow'> | boolean;
-  itemMargin?: ValueOf<CSS, 'margin'> | boolean;
-  itemBorder?: ValueOf<CSS, 'border'> | boolean;
-  itemBoxShadow?: ValueOf<CSS, 'boxShadow'> | boolean;
+  columnSize?: CSS['width'];
+  rowSize?: CSS['gridAutoRows'];
+  itemMargin?: CSS['margin'] | boolean;
+  itemBorder?: CSS['border'] | boolean;
+  itemBoxShadow?: CSS['boxShadow'] | boolean;
 }
 
-export const Grid = ({
-  as = 'div',
-  columns = 'auto-fit',
-  columnSize = '16rem',
-  rowSize = 'auto',
-  gap,
-  paddingBlock,
-  border,
-  shadow,
-  boxShadow,
-  itemMargin,
-  itemBorder,
-  itemBoxShadow,
-  ...props
-}: GridProps) => {
-  const StyledGrid = styled(as, {
-    display: 'grid',
-    gridAutoRows: rowSize,
-    gridTemplateColumns: `repeat(${columns}, minmax(${columnSize}, 1fr))`,
-    resolveCSSProperties: [
-      { gap, trueValue: '2rem' },
-      { paddingBlock, trueValue: '2rem' },
-      { border, trueValue: 'solid $gray8' },
-      { shadow, trueValue: '$blur' },
-      { boxShadow, trueValue: '$soft' },
-    ],
-    '& > *': {
+const StyledGrid = <T extends ElementType = 'div'>(
+  {
+    as,
+    css,
+    border,
+    boxShadow,
+    dropShadow,
+    paddingBlock,
+    gap,
+    columns = 'auto-fit',
+    columnSize = '16rem',
+    rowSize = 'auto',
+    itemMargin,
+    itemBorder,
+    itemBoxShadow,
+    ...rest
+  }: GridProps & BoxProps<T> & ComponentProps<T>,
+  ref: ForwardedRef<ElementType>
+) => (
+  <StyledComponent
+    {...rest}
+    {...{ ref, as }}
+    css={{
+      ...css,
+      display: 'grid',
+      gridAutoRows: rowSize,
+      gridTemplateColumns: `repeat(${columns}, minmax(${columnSize}, 1fr))`,
       resolveCSSProperties: [
-        { margin: itemMargin, trueValue: 'auto' },
-        { border: itemBorder, trueValue: '2px solid $gray8' },
-        { boxShadow: itemBoxShadow, trueValue: '$sm' },
+        { border, trueValue: 'solid $gray8' },
+        { boxShadow, trueValue: '$soft' },
+        { dropShadow, trueValue: '$blur' },
+        { paddingBlock, trueValue: '2rem' },
+        { gap, trueValue: '2rem' },
       ],
-    },
-  });
+      '& > *': {
+        resolveCSSProperties: [
+          { margin: itemMargin, trueValue: 'auto' },
+          { border: itemBorder, trueValue: '2px solid $gray8' },
+          { boxShadow: itemBoxShadow, trueValue: '$sm' },
+        ],
+      },
+    }}
+  />
+);
 
-  return <StyledGrid {...props} />;
-};
+export const Grid = forwardRef(StyledGrid);

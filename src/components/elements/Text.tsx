@@ -1,15 +1,7 @@
-import { Except, RequireExactlyOne, ValueOf } from 'type-fest';
 import { SetEntry } from 'type-fest/source/entry';
-import { IntrinsicElementsKeys } from '@stitches/react/types/styled-component';
-import { ComponentType } from 'react';
-import { CSS, StyledComponentProps, styled } from '@/lib/stitches';
-
-interface TextProps extends Except<StyledComponentProps, 'style'> {
-  font?: ValueOf<CSS, 'fontFamily'>;
-  size?: ValueOf<CSS, 'fontSize'>;
-  weight?: ValueOf<CSS, 'fontWeight'>;
-  style?: ValueOf<CSS, 'fontStyle'>;
-}
+import { ComponentProps, ElementType, ForwardedRef, forwardRef } from 'react';
+import { BoxProps } from '@/components/layout';
+import { CSS, StyledComponent } from '@/lib/stitches';
 
 const HTMLTextTags = new Set([
   'p',
@@ -30,31 +22,39 @@ const HTMLTextTags = new Set([
 
 type HTMLTextTag = SetEntry<typeof HTMLTextTags>[number];
 
-export const Text = (
-  props: TextProps &
-    Partial<
-      RequireExactlyOne<
-        Record<HTMLTextTag, boolean> & {
-          as: IntrinsicElementsKeys | ComponentType;
-        }
-      >
-    >
+type TextProps = {
+  font?: CSS['fontFamily'];
+  size?: CSS['fontSize'];
+  weight?: CSS['fontWeight'];
+  style?: CSS['fontStyle'];
+} & { [P in HTMLTextTag]?: boolean };
+
+const StyledText = <T extends ElementType = 'p'>(
+  { as, css, font, size, weight, style, ...rest }: TextProps & BoxProps<T> & ComponentProps<T>,
+  ref: ForwardedRef<ElementType>
 ) => {
-  const { as, font, size, weight, style, ...rest } = props;
-  const [tag, styledProps] = Object.entries(rest).reduce(
-    ([prev, props], [key, val]) =>
-      HTMLTextTags.has(key as HTMLTextTag) && val
-        ? [key, props]
-        : [prev, { ...props, [key]: val }],
+  const [tag, props] = Object.entries(rest).reduce(
+    ([prevTag, prevProps], [key, val]) =>
+      val && HTMLTextTags.has(key as HTMLTextTag)
+        ? [key, prevProps]
+        : [prevTag, { ...prevProps, [key]: val }],
     ['p', {}]
   );
 
-  const StyledText = styled(as || (tag as HTMLTextTag), {
-    fontFamily: font,
-    fontSize: size,
-    fontWeight: weight,
-    fontStyle: style,
-  });
-
-  return <StyledText {...styledProps} />;
+  return (
+    <StyledComponent
+      {...props}
+      ref={ref}
+      as={as || (tag as HTMLTextTag)}
+      css={{
+        ...css,
+        fontFamily: font,
+        fontSize: size,
+        fontWeight: weight,
+        fontStyle: style,
+      }}
+    />
+  );
 };
+
+export const Text = forwardRef(StyledText);

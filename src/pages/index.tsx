@@ -1,13 +1,10 @@
 import { Pokemon } from '@/types';
 import { GetServerSideProps } from 'next';
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import Image from 'next/image';
 import axios from 'axios';
 import { useTheme } from 'next-themes';
 import { Button, Text } from '@/components/elements';
-import { Box, Grid } from '@/components/layout';
-
-const Image = dynamic(() => import('next/image'), { suspense: true });
+import { Box, Flexbox, Grid } from '@/components/layout';
 
 // http://localhost:3000/?pokemon=[query] (or pikachu by default)
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -17,9 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const {
     data: { name, stats, sprites },
-  } = await axios.get<Pokemon>(
-    `https://pokeapi.co/api/v2/pokemon/${pokemon || 'pikachu'}`
-  );
+  } = await axios.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${pokemon || 'pikachu'}`);
 
   return { props: { pokemon: { name, stats, sprites } } };
 };
@@ -28,38 +23,31 @@ export default function Index({ pokemon }: { pokemon: Pokemon }) {
   const { theme, setTheme } = useTheme();
 
   return (
-    <Box flexbox justifyContent flexDirection="column" css={{ mx: '15%' }}>
+    <Flexbox justifyContent flexDirection="column" css={{ mx: '15%' }}>
       <Grid gap itemMargin>
         <Box>
           <Text h1 size="2.75rem">
             {pokemon.name}
           </Text>
           {pokemon.stats.map(({ base_stat, stat: { name } }) => (
-            <Box
-              key={name}
-              flexbox
-              justifyContent="space-between"
-              css={{ minWidth: '15rem' }}
-            >
+            <Flexbox key={name} justifyContent="space-between" css={{ minWidth: '15rem' }}>
               <Text span size="1.25rem" weight="bold">
                 {name}
               </Text>
               <Text span size="1.25rem" weight="bold">
                 {base_stat}
               </Text>
-            </Box>
+            </Flexbox>
           ))}
         </Box>
-        <Box shadow>
-          <Suspense fallback="loading...">
-            <Image
-              priority
-              width={600}
-              height={600}
-              alt={pokemon.name}
-              src={pokemon.sprites.other.home.front_default}
-            />
-          </Suspense>
+        <Box dropShadow>
+          <Image
+            priority
+            width={600}
+            height={600}
+            alt={pokemon.name}
+            src={pokemon.sprites.other.home.front_default}
+          />
         </Box>
       </Grid>
       <Box css={{ textAlign: 'center', my: '3rem' }}>
@@ -70,6 +58,6 @@ export default function Index({ pokemon }: { pokemon: Pokemon }) {
           onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
         />
       </Box>
-    </Box>
+    </Flexbox>
   );
 }

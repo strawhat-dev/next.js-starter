@@ -1,28 +1,12 @@
 // https://stitches.dev/docs/utils
-import { LiteralUnion, RequireExactlyOne, ValueOf } from 'type-fest';
 import { Property } from '@stitches/react/types/css';
-import { ComponentProps } from 'react';
 import { blackA, gray, grayA } from '@radix-ui/colors';
-import {
-  CSSProperties,
-  PropertyValue,
-  CSS as StitchesCSS,
-  createStitches,
-} from '@stitches/react';
+import { CSSProperties, PropertyValue, CSS as StitchesCSS, createStitches } from '@stitches/react';
 import { DropShadow, DropShadows, lg, sm, soft } from '@/config/shadows';
 
 export type CSS = StitchesCSS<typeof config>;
-export type StyledComponentProps = ComponentProps<typeof StyledComponent>;
 
-export const {
-  css,
-  theme,
-  config,
-  styled,
-  globalCss,
-  getCssText,
-  createTheme,
-} = createStitches({
+export const { css, theme, config, styled, globalCss, getCssText, createTheme } = createStitches({
   theme: {
     colors: { ...gray, ...grayA, ...blackA },
     shadows: { soft, sm, lg },
@@ -77,14 +61,11 @@ export const {
     },
 
     br: (borderRadius: PropertyValue<'borderRadius'>) => ({ borderRadius }),
+    bgColor: (backgroundColor: PropertyValue<'backgroundColor'>) => ({ backgroundColor }),
     rowSpan: (val: number) => ({ gridRow: `${val} span / auto` }),
     columnSpan: (val: number) => ({ gridColumn: `${val} span / auto` }),
-    bgColor: (backgroundColor: PropertyValue<'backgroundColor'>) => ({
-      backgroundColor,
-    }),
-    linearGradient: (val: string) => ({
-      backgroundImage: `linear-gradient(${val})`,
-    }),
+    linearGradient: (val: string) => ({ backgroundImage: `linear-gradient(${val})` }),
+
     size: (val: PropertyValue<'width'> | PropertyValue<'height'> | string) => {
       if (typeof val === 'string') {
         let [width, height] = val.trim().split(' ');
@@ -94,17 +75,13 @@ export const {
 
       return { width: val, height: val };
     },
-    shadow: (
-      val:
-        | [DropShadow, Property.Color]
-        | DropShadow
-        | PropertyValue<'boxShadow'>
-    ) => {
+
+    dropShadow: (val: [DropShadow, Property.Color] | DropShadow | PropertyValue<'boxShadow'>) => {
       let shadow;
       if (Array.isArray(val)) {
         const [token, color] = val;
         shadow = DropShadows[token].replace(
-          /\$(.*)/,
+          /[$].*/,
           color.startsWith('$') ? `$colors${color}` : color
         );
       }
@@ -115,22 +92,16 @@ export const {
     },
 
     resolveCSSProperties: (
-      entries: (RequireExactlyOne<
-        Record<LiteralUnion<keyof CSSProperties, string>, unknown>
-      > & {
-        trueValue: ValueOf<CSSProperties>;
+      entries: ({ [P in keyof CSSProperties]: CSSProperties[P] | boolean } & {
+        trueValue: unknown;
       })[]
     ) =>
-      entries.reduce((prev, { trueValue, ...entry }) => {
-        const [name, val] = Object.entries(entry).pop()!;
-        const resolved =
-          !val && val !== 0
-            ? {}
-            : val === true
-            ? { [name]: trueValue }
-            : { [name]: val };
-
-        return { ...prev, ...resolved };
+      entries.reduce((prev, { trueValue, ...rest }) => {
+        const property = Object.entries(rest);
+        const [key, val] = property.pop() || [];
+        const resolved = val === true ? trueValue : val;
+        const entry = val === undefined ? {} : { [key!]: resolved };
+        return { ...prev, ...entry };
       }, {}),
   },
 });
