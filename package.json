@@ -33,7 +33,7 @@
     "@next/bundle-analyzer": "latest",
     "@trivago/prettier-plugin-sort-imports": "latest",
     "@types/node": "latest",
-    "@types/react": "latest",
+    "@types/react": "^17.0.39",
     "critters": "latest",
     "cross-env": "latest",
     "eslint": "latest",
