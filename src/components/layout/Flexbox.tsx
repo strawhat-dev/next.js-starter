@@ -21,25 +21,23 @@ const StyledFlexbox = <T extends ElementType = 'div'>(
     ...rest
   }: FlexboxProps & BoxProps<T> & ComponentProps<T>,
   ref: ForwardedRef<ElementType>
-) => {
-  return (
-    <StyledComponent
-      {...rest}
-      {...{ ref, as }}
-      css={{
-        ...css,
-        flexDirection,
-        display: 'flex',
-        resolveCSSProperties: [
-          { alignItems, trueValue: 'center' },
-          { justifyContent, trueValue: 'center' },
-          { border, trueValue: 'solid $gray8' },
-          { boxShadow, trueValue: '$soft' },
-          { dropShadow, trueValue: '$blur' },
-        ],
-      }}
-    />
-  );
-};
+) => (
+  <StyledComponent
+    {...rest}
+    {...{ ref, as }}
+    css={{
+      ...css,
+      flexDirection,
+      display: 'flex',
+      resolveCSSProperties: [
+        { alignItems, trueValue: 'center' },
+        { justifyContent, trueValue: 'center' },
+        { border, trueValue: 'solid $gray8' },
+        { boxShadow, trueValue: '$soft' },
+        { dropShadow, trueValue: '$blur' },
+      ],
+    }}
+  />
+);
 
 export const Flexbox = forwardRef(StyledFlexbox);
