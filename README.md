@@ -16,6 +16,8 @@
 [![clearlydefined](https://img.shields.io/clearlydefined/score/git/github/strawhat-dev/next.js-starter/67a8d71518777bbb8634d11c574a2021c5fc66fb)](https://clearlydefined.io/definitions/git/github/strawhat-dev/next.js-starter/67a8d71518777bbb8634d11c574a2021c5fc66fb)
 [![license](https://img.shields.io/github/license/strawhat-dev/next.js-starter)](https://github.com/strawhat-dev/next.js-starter/blob/main/LICENSE)
 
+My personal and opinionated way to get started on Next.js projects with most optimal configuration possible.
+
 ## Features
 
 - Minimal bleeding edge Next.js 12 boilerplate w/ React 18
@@ -24,7 +26,7 @@
 - Project structure based off of [bulletproof-react](https://github.com/alan2207/bulletproof-react)
 - Simple but useful demo features theme handling, and data fetched and displayed with [ssr](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 
-### Included Opinionated Options
+### Included Libraries
 
 - [sanitize.css](https://github.com/csstools/sanitize.css): CSS library that provides consistent, cross-browser default styling of HTML elements alongside useful defaults
 
