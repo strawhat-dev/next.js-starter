@@ -11,7 +11,7 @@ interface Pokemon {
   sprites: { other: { home: { front_default: string } } };
 }
 
-// http://localhost:3000/?pokemon=[query] (or pikachu by default)
+// https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const {
     query: { pokemon },
@@ -26,6 +26,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return { props: { pokemon: { name, stats, sprites } } };
 };
 
+// http://localhost:3000/?pokemon=[query] (or pikachu by default)
 export default function Index({ pokemon }: { pokemon: Pokemon }) {
   const { theme, setTheme } = useTheme();
 
