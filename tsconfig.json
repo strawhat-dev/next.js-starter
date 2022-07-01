@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": ["next-env.d.ts", "src"],
+  "include": ["src", "next-env.d.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "jsx": "preserve",
@@ -23,4 +23,3 @@
     "paths": { "@/*": ["src/*"] }
   }
 }
- 
