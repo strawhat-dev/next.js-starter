@@ -30,7 +30,15 @@ type TextProps = {
 } & { [P in HTMLTextTag]?: boolean };
 
 const StyledText = <T extends ElementType = 'p'>(
-  { as, css, font, size, weight, style, ...rest }: TextProps & BoxProps<T> & ComponentProps<T>,
+  {
+    as,
+    css,
+    font,
+    size,
+    weight,
+    style,
+    ...rest
+  }: TextProps & BoxProps<T> & ComponentProps<T>,
   ref: ForwardedRef<ElementType>
 ) => {
   const [tag, props] = Object.entries(rest).reduce(

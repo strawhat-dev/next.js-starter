@@ -3,7 +3,9 @@ import { useCallback, useRef, useState } from 'react';
 export const useToggle = <T = boolean>(...initialStates: readonly T[]) => {
   const [state, setState] = useState(0);
   const states = useRef(
-    initialStates.length < 2 ? ([!!initialStates[0], !initialStates[0]] as const) : initialStates
+    initialStates.length < 2
+      ? ([!!initialStates[0], !initialStates[0]] as const)
+      : initialStates
   );
 
   return [

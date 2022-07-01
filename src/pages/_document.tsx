@@ -17,8 +17,14 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="stylesheet" href={`https://cdn.jsdelivr.net/combine/${sanitizeCSS}`} />
-        <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
+        <link
+          rel="stylesheet"
+          href={`https://cdn.jsdelivr.net/combine/${sanitizeCSS}`}
+        />
+        <style
+          id="stitches"
+          dangerouslySetInnerHTML={{ __html: getCssText() }}
+        />
       </Head>
       <body>
         <Main />

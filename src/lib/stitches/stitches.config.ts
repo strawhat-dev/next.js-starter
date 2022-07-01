@@ -1,12 +1,25 @@
 // https://stitches.dev/docs/utils
 import { Property } from '@stitches/react/types/css';
 import { blackA, gray, grayA } from '@radix-ui/colors';
-import { CSSProperties, PropertyValue, CSS as StitchesCSS, createStitches } from '@stitches/react';
+import {
+  CSSProperties,
+  PropertyValue,
+  CSS as StitchesCSS,
+  createStitches,
+} from '@stitches/react';
 import { DropShadow, DropShadows, lg, sm, soft } from '@/config/shadows';
 
 export type CSS = StitchesCSS<typeof config>;
 
-export const { css, theme, config, styled, globalCss, getCssText, createTheme } = createStitches({
+export const {
+  css,
+  theme,
+  config,
+  styled,
+  globalCss,
+  getCssText,
+  createTheme,
+} = createStitches({
   theme: {
     colors: { ...gray, ...grayA, ...blackA },
     shadows: { soft, sm, lg },
@@ -61,10 +74,14 @@ export const { css, theme, config, styled, globalCss, getCssText, createTheme } 
     },
 
     br: (borderRadius: PropertyValue<'borderRadius'>) => ({ borderRadius }),
-    bgColor: (backgroundColor: PropertyValue<'backgroundColor'>) => ({ backgroundColor }),
+    bgColor: (backgroundColor: PropertyValue<'backgroundColor'>) => ({
+      backgroundColor,
+    }),
     rowSpan: (val: number) => ({ gridRow: `${val} span / auto` }),
     columnSpan: (val: number) => ({ gridColumn: `${val} span / auto` }),
-    linearGradient: (val: string) => ({ backgroundImage: `linear-gradient(${val})` }),
+    linearGradient: (val: string) => ({
+      backgroundImage: `linear-gradient(${val})`,
+    }),
 
     size: (val: PropertyValue<'width'> | PropertyValue<'height'> | string) => {
       if (typeof val === 'string') {
@@ -76,7 +93,12 @@ export const { css, theme, config, styled, globalCss, getCssText, createTheme } 
       return { width: val, height: val };
     },
 
-    dropShadow: (val: [DropShadow, Property.Color] | DropShadow | PropertyValue<'boxShadow'>) => {
+    dropShadow: (
+      val:
+        | [DropShadow, Property.Color]
+        | DropShadow
+        | PropertyValue<'boxShadow'>
+    ) => {
       let shadow;
       if (Array.isArray(val)) {
         const [token, color] = val;

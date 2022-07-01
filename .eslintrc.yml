@@ -3,4 +3,5 @@ root: true
 env: { node: true, es2022: true, browser: true }
 extends: [next/core-web-vitals, prettier]
 rules:
-  import/no-anonymous-default-export: [warn, { allowObject: true, allowArrowFunction: true }]
+  import/no-anonymous-default-export:
+    [warn, { allowObject: true, allowArrowFunction: true }]

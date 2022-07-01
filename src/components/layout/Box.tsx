@@ -10,7 +10,14 @@ export interface BoxProps<T = 'div'> {
 }
 
 const StyledBox = <T extends ElementType = 'div'>(
-  { as, css, border, boxShadow, dropShadow, ...rest }: BoxProps<T> & ComponentProps<T>,
+  {
+    as,
+    css,
+    border,
+    boxShadow,
+    dropShadow,
+    ...rest
+  }: BoxProps<T> & ComponentProps<T>,
   ref: ForwardedRef<Element>
 ) => (
   <StyledComponent

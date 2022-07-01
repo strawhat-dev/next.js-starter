@@ -14,7 +14,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const {
     data: { name, stats, sprites },
-  } = await axios.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon/${pokemon || 'pikachu'}`);
+  } = await axios.get<Pokemon>(
+    `https://pokeapi.co/api/v2/pokemon/${pokemon || 'pikachu'}`
+  );
 
   return { props: { pokemon: { name, stats, sprites } } };
 };
@@ -30,7 +32,11 @@ export default function Index({ pokemon }: { pokemon: Pokemon }) {
             {pokemon.name}
           </Text>
           {pokemon.stats.map(({ base_stat, stat: { name } }) => (
-            <Flexbox key={name} justifyContent="space-between" css={{ minWidth: '15rem' }}>
+            <Flexbox
+              key={name}
+              justifyContent="space-between"
+              css={{ minWidth: '15rem' }}
+            >
               <Text span size="1.25rem" weight="bold">
                 {name}
               </Text>
