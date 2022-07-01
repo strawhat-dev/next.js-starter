@@ -1,10 +1,15 @@
-import { Pokemon } from '@/types';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import axios from 'axios';
 import { useTheme } from 'next-themes';
 import { Button, Text } from '@/components/elements';
 import { Box, Flexbox, Grid } from '@/components/layout';
+
+interface Pokemon {
+  name: string;
+  stats: { base_stat: number; stat: { name: string } }[];
+  sprites: { other: { home: { front_default: string } } };
+}
 
 // http://localhost:3000/?pokemon=[query] (or pikachu by default)
 export const getServerSideProps: GetServerSideProps = async (context) => {

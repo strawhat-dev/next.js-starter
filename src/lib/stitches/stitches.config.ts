@@ -128,14 +128,12 @@ export const {
   },
 });
 
+// https://www.bram.us/2021/07/08/the-large-small-and-dynamic-viewports/#dynamic-viewport
 export const applyGlobalCSS = globalCss({
-  html: {
-    color: '$gray12',
-    bgColor: '$gray1',
-    height: '-webkit-fill-available',
-  },
-  body: { minHeight: '100vh; min-height: -webkit-fill-available;' },
-  '#__next > div': { minHeight: '100vh' },
+  html: { bgColor: '$gray1', color: '$gray12' },
+  body: { height: '100dvh' },
+  '#__next': { height: '100vh' },
+  '#__next > div': { minHeight: '100%' },
 });
 
 export const StyledComponent = styled('div');
