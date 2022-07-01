@@ -1,3 +1,5 @@
+// https://nextjs.org/docs/api-reference/next.config.js/introduction
+// https://nextjs.org/docs/basic-features/image-optimization
 import bundleAnalyzer from '@next/bundle-analyzer';
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -14,7 +16,6 @@ const config = {
     domains: ['raw.githubusercontent.com'],
   },
   experimental: {
-    runtime: 'nodejs',
     optimizeCss: true,
     serverComponents: true,
   },
