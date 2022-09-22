@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 // http://localhost:3000/?pokemon=[query] (or pikachu by default)
-export default function Index({ pokemon }: { pokemon: Pokemon }) {
+export default function Index({ pokemon }: { pokemon?: Pokemon }) {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -39,9 +39,9 @@ export default function Index({ pokemon }: { pokemon: Pokemon }) {
       <Grid gap itemMargin>
         <Box>
           <Text h1 size="2.75rem">
-            {pokemon.name}
+            {pokemon?.name}
           </Text>
-          {pokemon.stats.map(({ base_stat, stat: { name } }) => (
+          {pokemon?.stats.map(({ base_stat, stat: { name } }) => (
             <Flexbox
               key={name}
               justifyContent="space-between"
