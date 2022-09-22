@@ -61,8 +61,8 @@ export default function Index({ pokemon }: { pokemon?: Pokemon }) {
             priority
             width={600}
             height={600}
-            alt={pokemon.name}
-            src={pokemon.sprites.other.home.front_default}
+            alt={pokemon?.name}
+            src={pokemon?.sprites.other.home.front_default || ''}
           />
         </Box>
       </Grid>
