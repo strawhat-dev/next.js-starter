@@ -1,7 +1,8 @@
 // https://stitches.dev/docs/server-side-rendering
-// https://nextjs.org/docs/advanced-features/react-18/server-components#nextdocument
-import { Head, Html, Main, NextScript } from 'next/document';
+import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 import { applyGlobalCSS, getCssText } from '@/lib/stitches';
+
+applyGlobalCSS();
 
 const sanitizeCSS = [
   'npm/sanitize.css@latest/sanitize.min.css',
@@ -12,24 +13,25 @@ const sanitizeCSS = [
   'npm/sanitize.css@latest/forms.min.css',
 ].join(',');
 
-export default function Document() {
-  applyGlobalCSS();
-  return (
-    <Html lang="en">
-      <Head>
-        <link
-          rel="stylesheet"
-          href={`https://cdn.jsdelivr.net/combine/${sanitizeCSS}`}
-        />
-        <style
-          id="stitches"
-          dangerouslySetInnerHTML={{ __html: getCssText() }}
-        />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+export default class Document extends NextDocument {
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <link
+            rel="stylesheet"
+            href={`https://cdn.jsdelivr.net/combine/${sanitizeCSS}`}
+          />
+          <style
+            id="stitches"
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }

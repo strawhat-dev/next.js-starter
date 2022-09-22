@@ -10,14 +10,11 @@ const withBundleAnalyzer = bundleAnalyzer({
 const config = {
   swcMinify: true,
   reactStrictMode: true,
+  experimental: { optimizeCss: true },
   compiler: { removeConsole: process.env.NODE_ENV === 'production' },
   images: {
     formats: ['image/avif', 'image/webp'],
     domains: ['raw.githubusercontent.com'],
-  },
-  experimental: {
-    optimizeCss: true,
-    serverComponents: true,
   },
 };
 
