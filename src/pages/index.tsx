@@ -57,13 +57,15 @@ export default function Index({ pokemon }: { pokemon?: Pokemon }) {
           ))}
         </Box>
         <Box dropShadow>
-          <Image
-            priority
-            width={600}
-            height={600}
-            alt={pokemon?.name}
-            src={pokemon?.sprites.other.home.front_default || ''}
-          />
+          {pokemon && (
+            <Image
+              priority
+              width={600}
+              height={600}
+              alt={pokemon.name}
+              src={pokemon.sprites.other.home.front_default}
+            />
+          )}
         </Box>
       </Grid>
       <Box css={{ textAlign: 'center', my: '3rem' }}>
