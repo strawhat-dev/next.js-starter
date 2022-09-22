@@ -1,4 +1,10 @@
-import { ComponentProps, ElementType, ForwardedRef, forwardRef } from 'react';
+import {
+  ComponentPropsWithRef,
+  ElementRef,
+  ElementType,
+  ForwardedRef,
+  forwardRef,
+} from 'react';
 import { BoxProps } from '@/components/layout';
 import { CSS, StyledComponent } from '@/lib/stitches';
 
@@ -29,8 +35,8 @@ const StyledGrid = <T extends ElementType = 'div'>(
     itemBorder,
     itemBoxShadow,
     ...rest
-  }: GridProps & BoxProps<T> & ComponentProps<T>,
-  ref: ForwardedRef<ElementType>
+  }: GridProps & BoxProps<T> & ComponentPropsWithRef<T>,
+  ref: ForwardedRef<ElementRef<T>>
 ) => (
   <StyledComponent
     {...rest}

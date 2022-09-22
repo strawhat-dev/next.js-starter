@@ -1,5 +1,4 @@
 // https://stitches.dev/docs/utils
-import { Property } from '@stitches/react/types/css';
 import { blackA, gray, grayA } from '@radix-ui/colors';
 import {
   CSSProperties,
@@ -94,10 +93,7 @@ export const {
     },
 
     dropShadow: (
-      val:
-        | [DropShadow, Property.Color]
-        | DropShadow
-        | PropertyValue<'boxShadow'>
+      val: [DropShadow, string] | DropShadow | PropertyValue<'boxShadow'>
     ) => {
       let shadow;
       if (Array.isArray(val)) {
@@ -133,7 +129,6 @@ export const applyGlobalCSS = globalCss({
   html: { bgColor: '$gray1', color: '$gray12' },
   body: { height: '100dvh' },
   '#__next': { height: '100vh' },
-  '#__next > div': { minHeight: '100%' },
 });
 
 export const StyledComponent = styled('div');

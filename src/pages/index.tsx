@@ -31,7 +31,11 @@ export default function Index({ pokemon }: { pokemon: Pokemon }) {
   const { theme, setTheme } = useTheme();
 
   return (
-    <Flexbox justifyContent flexDirection="column" css={{ mx: '15%' }}>
+    <Flexbox
+      justifyContent
+      flexDirection="column"
+      css={{ mx: '15%', minHeight: '100%' }}
+    >
       <Grid gap itemMargin>
         <Box>
           <Text h1 size="2.75rem">

@@ -1,5 +1,11 @@
 import { SetEntry } from 'type-fest/source/entry';
-import { ComponentProps, ElementType, ForwardedRef, forwardRef } from 'react';
+import {
+  ComponentPropsWithRef,
+  ElementRef,
+  ElementType,
+  ForwardedRef,
+  forwardRef,
+} from 'react';
 import { BoxProps } from '@/components/layout';
 import { CSS, StyledComponent } from '@/lib/stitches';
 
@@ -38,21 +44,21 @@ const StyledText = <T extends ElementType = 'p'>(
     weight,
     style,
     ...rest
-  }: TextProps & BoxProps<T> & ComponentProps<T>,
-  ref: ForwardedRef<ElementType>
+  }: TextProps & BoxProps<T> & ComponentPropsWithRef<T>,
+  ref: ForwardedRef<ElementRef<T>>
 ) => {
   const [tag, props] = Object.entries(rest).reduce(
     ([prevTag, prevProps], [key, val]) =>
       val && HTMLTextTags.has(key as HTMLTextTag)
         ? [key, prevProps]
         : [prevTag, { ...prevProps, [key]: val }],
-    ['p', {}]
+    ['div', {}]
   );
 
   return (
     <StyledComponent
       {...props}
-      ref={ref}
+      {...{ ref }}
       as={as || (tag as HTMLTextTag)}
       css={{
         ...css,
