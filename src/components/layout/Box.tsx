@@ -6,7 +6,7 @@ import {
   forwardRef,
 } from 'react';
 import { CSS, StyledComponent } from '@/lib/stitches';
-import { resolveBooleanMapping } from '@/util';
+import { findKey } from '@/util';
 
 export interface BoxProps<T> {
   as?: T;
@@ -30,12 +30,12 @@ const StyledBox = <T extends ElementType = 'div'>(
     ComponentPropsWithRef<T>,
   ref: ForwardedRef<ElementRef<T>>
 ) => {
-  const el = resolveBooleanMapping({ span, button });
+  const el = findKey({ span, button });
 
   return (
     <StyledComponent
       {...rest}
-      {...{ ref }}
+      ref={ref}
       as={el || as}
       css={{
         ...css,
