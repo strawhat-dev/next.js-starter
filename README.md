@@ -24,7 +24,7 @@ My personal and opinionated way to get started on Next.js projects with most opt
 - Prioritized for css-in-js using [Stitches](https://stitches.dev), w/ theme support
 - Pre-configured with TypeScript, ESLint, and Prettier out of the box
 - Project structure based off of [bulletproof-react](https://github.com/alan2207/bulletproof-react)
-- Simple but useful demo features theme handling, and data fetched and displayed with [ssr](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
+- Simple but useful demo features theme handling and data fetched/displayed with [ssr](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 
 ### Included Libraries
 
