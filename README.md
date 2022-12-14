@@ -20,7 +20,7 @@ My personal and opinionated way to get started on Next.js projects with most opt
 
 ## Features
 
-- Minimal bleeding edge Next.js 12 boilerplate w/ React 18
+- Minimal bleeding edge Next.js 13 boilerplate w/ React 18
 - Prioritized for css-in-js using [Stitches](https://stitches.dev), w/ theme support
 - Pre-configured with TypeScript, ESLint, and Prettier out of the box
 - Project structure based off of [bulletproof-react](https://github.com/alan2207/bulletproof-react)
@@ -70,8 +70,7 @@ My personal and opinionated way to get started on Next.js projects with most opt
 
 - [react-query](https://react-query.tanstack.com/quick-start): "The missing data-fetching library for React". Includes fetching, caching, synchronizing, and updating server state
 
-- [swr](https://swr.vercel.app): React hooks for data fetching, and more lightweight alternative 
-to react-query
+- [swr](https://swr.vercel.app): React hooks for data fetching, and more lightweight alternative to react-query
 
 #### ORM
 
