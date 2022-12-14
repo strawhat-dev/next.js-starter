@@ -16,7 +16,7 @@ export const useCycle = <T extends Cyclable>(...initialStates: T) => {
   return [
     states.current[state] as T extends Togglable ? boolean : T[number],
     useCallback(
-      (update?: RequireExactlyOne<{ index?: number; value?: T[number] }>) =>
+      (update?: RequireExactlyOne<{ index: number; value: T[number] }>) =>
         setState((prev) => {
           let { index, value } = update || {};
           if (value) index = states.current.findIndex((val) => val === value);
