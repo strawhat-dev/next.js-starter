@@ -28,11 +28,13 @@ My personal and opinionated way to get started on Next.js projects with most opt
 
 ### Included Libraries
 
+- [@stitches/react](https://github.com/stitchesjs/stitches): "CSS-in-JS with near-zero runtime, SSR, multi-variant support, and a best-in-class developer experience"
+
+- [@radix-ui/colors](https://www.radix-ui.com/colors): Library that provides palletes and color scales for design. Pairs well with stitches and next-themes to provide a complete theming solution.
+
 - [sanitize.css](https://github.com/csstools/sanitize.css): CSS library that provides consistent, cross-browser default styling of HTML elements alongside useful defaults
 
 - [next-themes](https://github.com/pacocoursey/next-themes): Abstraction for handling themes in Next.js and features no flash on load (both SSR and SSG)
-
-- [@radix-ui/colors](https://www.radix-ui.com/colors): Library that provides palletes and color scales for design and pairs well with Stitches and next-themes
 
 - [reactive-button](https://arifszn.com/reactive-button/docs): Tiny 3D animated React button library with zero dependencies
 
