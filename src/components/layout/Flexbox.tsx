@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { BoxProps } from '@/components/layout';
 import { CSS, StyledComponent } from '@/lib/stitches';
-import { resolveBooleanMapping } from '@/util';
+import { findKey } from '@/util';
 
 interface FlexboxProps {
   span?: boolean;
@@ -33,12 +33,12 @@ const StyledFlexbox = <T extends ElementType = 'div'>(
   }: FlexboxProps & BoxProps<T> & ComponentPropsWithRef<T>,
   ref: ForwardedRef<ElementRef<T>>
 ) => {
-  const el = resolveBooleanMapping({ span, button });
+  const el = findKey({ span, button });
 
   return (
     <StyledComponent
       {...rest}
-      {...{ ref }}
+      ref={ref}
       as={el || as}
       css={{
         ...css,
