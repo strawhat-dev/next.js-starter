@@ -1,2 +1,2 @@
+export * from './useCycle';
 export * from './useIsMounted';
-export * from './useToggle';

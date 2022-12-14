@@ -1,13 +1,15 @@
 import { GetServerSideProps } from 'next';
-import Image from 'next/image';
 import axios from 'axios';
+import Image from 'next/image';
+import { useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { useCycle } from '@/hooks';
 import { Button, Text } from '@/components/elements';
 import { Box, Flexbox, Grid } from '@/components/layout';
 
 interface Pokemon {
   name: string;
-  stats: { base_stat: number; stat: { name: string } }[];
+  stats: { stat: { name: string }; base_stat: number }[];
   sprites: { other: { home: { front_default: string } } };
 }
 
@@ -28,7 +30,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 // http://localhost:3000/?pokemon=[query] (or pikachu by default)
 export default function Index({ pokemon }: { pokemon?: Pokemon }) {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
+  const [theme, cycleTheme] = useCycle('light', 'dark');
+
+  useEffect(() => {
+    setTheme(theme);
+  }, [theme, setTheme]);
 
   return (
     <Flexbox
@@ -41,7 +48,7 @@ export default function Index({ pokemon }: { pokemon?: Pokemon }) {
           <Text h1 size="2.75rem">
             {pokemon?.name}
           </Text>
-          {pokemon?.stats.map(({ base_stat, stat: { name } }) => (
+          {pokemon?.stats.map(({ stat: { name }, base_stat }) => (
             <Flexbox
               key={name}
               justifyContent="space-between"
@@ -69,12 +76,7 @@ export default function Index({ pokemon }: { pokemon?: Pokemon }) {
         </Box>
       </Grid>
       <Box css={{ textAlign: 'center', my: '3rem' }}>
-        <Button
-          shadow
-          rounded
-          size="large"
-          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-        />
+        <Button shadow rounded size="large" onClick={() => cycleTheme()} />
       </Box>
     </Flexbox>
   );
