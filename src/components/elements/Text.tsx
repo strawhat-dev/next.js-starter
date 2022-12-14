@@ -35,7 +35,7 @@ type TextProps = {
   style?: CSS['fontStyle'];
 } & { [P in HTMLTextTag]?: boolean };
 
-const StyledText = <T extends ElementType = 'p'>(
+const StyledText = <T extends ElementType = 'div'>(
   {
     as,
     css,
@@ -58,7 +58,7 @@ const StyledText = <T extends ElementType = 'p'>(
   return (
     <StyledComponent
       {...props}
-      {...{ ref }}
+      ref={ref}
       as={as || (tag as HTMLTextTag)}
       css={{
         ...css,

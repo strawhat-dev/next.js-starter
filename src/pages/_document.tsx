@@ -2,8 +2,6 @@
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 import { applyGlobalCSS, getCssText } from '@/lib/stitches';
 
-applyGlobalCSS();
-
 const sanitizeCSS = [
   'npm/sanitize.css@latest/sanitize.min.css',
   'npm/sanitize.css@latest/system-ui.min.css',
@@ -15,6 +13,7 @@ const sanitizeCSS = [
 
 export default class Document extends NextDocument {
   render() {
+    applyGlobalCSS();
     return (
       <Html lang="en">
         <Head>

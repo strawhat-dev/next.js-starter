@@ -7,6 +7,8 @@ import { useCycle } from '@/hooks';
 import { Button, Text } from '@/components/elements';
 import { Box, Flexbox, Grid } from '@/components/layout';
 
+/** @see https://pokeapi.co/ */
+axios.defaults.baseURL = 'https://pokeapi.co/api/v2/pokemon';
 interface Pokemon {
   name: string;
   stats: { stat: { name: string }; base_stat: number }[];
@@ -21,9 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const {
     data: { name, stats, sprites },
-  } = await axios.get<Pokemon>(
-    `https://pokeapi.co/api/v2/pokemon/${pokemon || 'pikachu'}`
-  );
+  } = await axios.get<Pokemon>(`/${pokemon || 'pikachu'}`);
 
   return { props: { pokemon: { name, stats, sprites } } };
 };
