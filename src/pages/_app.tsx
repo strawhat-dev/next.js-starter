@@ -6,13 +6,14 @@ import { dark, light } from '@/config/themes';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider
-      attribute="class"
-      enableSystem={false}
-      value={{ dark, light }}
-    >
-      <Head />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <Head>
+      <ThemeProvider
+        attribute="class"
+        enableSystem={false}
+        value={{ light, dark }}
+      >
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Head>
   );
 }
