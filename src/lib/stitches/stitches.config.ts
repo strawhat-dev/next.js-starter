@@ -109,20 +109,27 @@ export const {
       return { filter: `drop-shadow(${shadow})` };
     },
 
+    /**
+     * @summary Provides a quick way to assign multiple properties (or discard
+     * for undefined properties) with a given default value for when the
+     * property is specified (as true), but not necessarily given a value
+     */
     resolveCSSProperties: (
       entries: ({ [P in keyof CSSProperties]: CSSProperties[P] | boolean } & {
         trueValue: unknown;
       })[]
-    ) =>
-      entries.reduce((prev, { trueValue, ...rest }) => {
-        const property = Object.entries(rest);
-        const [key, val] = property.pop() || [];
-        const resolved = val === true ? trueValue : val;
-        const entry = val === undefined ? {} : { [key!]: resolved };
-        return { ...prev, ...entry };
-      }, {}),
+    ) => {
+      return entries.reduce((prev, { trueValue, ...rest }) => {
+        const [key, val] = Object.entries(rest).pop() || [''];
+        const entry = { [key]: val === true ? trueValue : val };
+        const next = val === undefined ? {} : entry;
+        return { ...prev, ...next };
+      }, {});
+    },
   },
 });
+
+export const StyledComponent = styled('div');
 
 // https://www.bram.us/2021/07/08/the-large-small-and-dynamic-viewports/#dynamic-viewport
 export const applyGlobalCSS = globalCss({
@@ -130,5 +137,3 @@ export const applyGlobalCSS = globalCss({
   body: { height: '100dvh' },
   '#__next': { height: '100vh' },
 });
-
-export const StyledComponent = styled('div');
