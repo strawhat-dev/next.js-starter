@@ -16,8 +16,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --no-cache",
-    "inspect": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "analyze": "cross-env ANALYZE='true' next build"
+    "analyze": "cross-env ANALYZE=true next build",
+    "inspect": "cross-env NODE_OPTIONS=\"--inspect\" next dev"
   },
   "dependencies": {
     "@radix-ui/colors": "^0.1.8",
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.0.6",
+    "@types/eslint": "^8.4.10",
     "@types/node": "^18.11.15",
     "@types/react": "^18.0.26",
     "critters": "^0.0.16",
