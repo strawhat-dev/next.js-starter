@@ -24,7 +24,7 @@
     "@stitches/react": "^1.2.8",
     "axios": "1.1.3",
     "dayjs": "^1.11.7",
-    "next": "^13.0.6",
+    "next": "^13.0.7",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,14 +33,14 @@
     "type-fest": "^3.4.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^13.0.6",
+    "@next/bundle-analyzer": "^13.0.7",
     "@types/eslint": "^8.4.10",
-    "@types/node": "^18.11.15",
+    "@types/node": "^18.11.17",
     "@types/react": "^18.0.26",
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
-    "eslint": "^8.29.0",
-    "eslint-config-next": "^13.0.6",
+    "eslint": "^8.30.0",
+    "eslint-config-next": "^13.0.7",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.8.1",
     "typescript": "^4.9.4"
